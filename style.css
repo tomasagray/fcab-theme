@@ -38,6 +38,7 @@ div#menu-wrapper {
     box-shadow: 0 2px 7px 5px #aaa;
     width: 100%;
 }
+
 div#menu-container {
     display: flex;
     justify-content: center;
@@ -93,6 +94,7 @@ div#content-wrapper {
     display: flex;
     justify-content: center;
 }
+
 div#content-container {
     margin-top: var(--nav-menu-height, 250px);
     min-height: 35rem;
