@@ -11,112 +11,37 @@ Text Domain: fcab-theme
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+@import "css/header.css";
+@import "css/footer.css";
 
+/* Variables */
 :root {
     --nav-menu-height: 5rem;
+    --footer-hover-color: forestgreen;
 }
 
-/**
- * Base styles
- */
+/* Base styles */
 body {
     margin: 0;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif !important;
+    font-size: 12pt;
 }
 
-/**
- Header
- */
-div#menu-wrapper {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    max-height: var(--nav-menu-height, 250px);
-    box-sizing: border-box;
-    box-shadow: 0 2px 7px 5px #aaa;
-    width: 100%;
-}
-
-div#menu-container {
-    display: flex;
-    justify-content: center;
-    width: 75%;
-    align-items: center;
-    padding: .8rem;
-    background-color: white;
-}
-
-img#header-logo {
-    height: 4rem;
-}
-
-ul#nav-menu-main {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 1.2rem;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-
-ul.sub-menu {
-    display: none;
-}
-
-ul#nav-menu-main > li {
-    padding: .8rem 2rem;
-    margin: 0;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-li.menu-item > a {
-    text-decoration: none;
+h1 {
     color: black;
-    font-weight: bold;
+    font-size: 32pt;
 }
 
-li.menu-item:hover {
-    background-color: #ccc;
-    cursor: pointer;
-}
-
-/*
-    Content
- */
-
+/* Content */
 div#content-wrapper {
     display: flex;
     justify-content: center;
+    overflow: scroll;
 }
 
 div#content-container {
     margin-top: var(--nav-menu-height, 250px);
     min-height: 35rem;
     width: 75%;
-}
-
-/**
-Footer
- */
-div#fcab-footer-container {
-    margin: 0;
-    padding: 3rem;
-    background-color: whitesmoke;
-    top: 0;
-    left: 0;
-    text-align: center;
-}
-
-img#footer-logo {
-    height: 4rem;
-}
-
-h4#social-heading {
-    text-transform: uppercase;
+    padding: 4rem 0;
 }

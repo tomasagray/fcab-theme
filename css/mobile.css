@@ -1,0 +1,50 @@
+/* Mobile styles */
+img#mobile-menu-button {
+    display: block;
+}
+
+div#menu-container {
+    justify-content: space-between;
+    width: 100%;
+}
+
+div#menu-outer-container {
+    position: fixed;
+}
+
+div#nav-menu-main {
+    display: none;
+    opacity: 0;
+
+    flex-flow: column;
+    flex: 1 1 auto;
+    background-color: whitesmoke;
+    height: 100%;
+    position: fixed;
+    top: var(--nav-menu-height);
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul#nav-main-menu {
+    padding: 0;
+    display: table;
+}
+
+div#content-container {
+    width: 100%;
+    min-height: 100%;
+    padding: 2rem;
+}
+
+ul.social-button-menu > li {
+    margin: 0;
+}
+
+li.menu-item {
+    margin: 0;
+    font-size: 16pt;
+    padding: 2rem;
+}
