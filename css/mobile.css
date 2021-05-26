@@ -1,6 +1,18 @@
 /* Mobile styles */
+h1 {
+    font-size: 32pt;
+}
+
 img#mobile-menu-button {
     display: block;
+}
+
+img#header-logo {
+    display: none;
+}
+
+img#header-logo-mobile {
+    display: inline;
 }
 
 div#menu-container {
@@ -33,10 +45,22 @@ ul#nav-main-menu {
     display: table;
 }
 
+div#content-wrapper {
+    overflow: hidden;
+}
+
 div#content-container {
     width: 100%;
     min-height: 100%;
-    padding: 2rem;
+    padding: 4rem 0;
+}
+
+.content-box {
+    padding: 0 2rem;
+}
+
+.content-box.hero {
+    top: -5%;
 }
 
 ul.social-button-menu > li {
@@ -47,4 +71,105 @@ li.menu-item {
     margin: 0;
     font-size: 16pt;
     padding: 2rem;
+}
+
+div.hero-header-container {
+    width: 100%;
+    left: 0;
+}
+
+div.hero-header-image {
+    width: 150%;
+    transform: translate(-25%, -6vw);
+    height: 15rem;
+}
+
+.hero-header-text {
+    width: 100%;
+}
+
+.hero-header-text > h1 {
+    font-size: 2rem;
+}
+
+.hero-header-text > h4 {
+    font-size: 10pt;
+    font-weight: lighter;
+}
+
+/* About page */
+div#about-page-container {
+    display: table;
+}
+
+.child-page {
+    height: revert;
+}
+
+.child-page-image {
+    float: revert !important;
+    width: 100%;
+    height: 25vh;
+}
+
+.child-page-excerpt {
+    max-width: 100%;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Projects */
+.project-tags-container {
+    margin: 3rem auto;
+    flex-wrap: wrap;
+}
+
+.project-tags-container > form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+a.project-sort-tag {
+    font-size: 1rem;
+    padding: .3rem;
+}
+
+.project-card-container {
+    flex-flow: column;
+}
+
+.project-card {
+    min-width: 100%;
+}
+
+img.project-featured-image {
+    width: 100%;
+}
+
+span.project-tag {
+    font-size: 9pt;
+    display: inline-block;
+    margin-right: 0.3rem;
+    margin-bottom: .5rem;
+}
+
+/* Fusion overrides */
+.fusion-row {
+    display: flex;
+    flex-flow: column;
+}
+
+.fusion-one-sixth,
+.fusion-five-sixth,
+.fusion-one-fifth,
+.fusion-two-fifth,
+.fusion-three-fifth,
+.fusion-four-fifth,
+.fusion-one-fourth,
+.fusion-three-fourth,
+.fusion-one-third,
+.fusion-two-third,
+.fusion-one-half {
+    width: revert;
 }

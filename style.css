@@ -13,11 +13,21 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 @import "css/header.css";
 @import "css/footer.css";
+@import "css/project_page.css";
+
+/* Wordpress overrides */
+.wp-block-embed {
+    margin: 5rem;
+    text-align: center;
+}
 
 /* Variables */
 :root {
     --nav-menu-height: 5rem;
     --footer-hover-color: forestgreen;
+    --highlight-button-color: forestgreen;
+    --learn-more-button-color: darkblue;
+    --header-color: #006011;
 }
 
 /* Base styles */
@@ -25,23 +35,202 @@ body {
     margin: 0;
     font-family: 'M PLUS Rounded 1c', sans-serif !important;
     font-size: 12pt;
+    color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    line-height: 1;
 }
 
 h1 {
     color: black;
-    font-size: 32pt;
+    font-size: 38pt;
 }
 
 /* Content */
 div#content-wrapper {
     display: flex;
     justify-content: center;
-    overflow: scroll;
+    background-color: #eee;
 }
 
 div#content-container {
-    margin-top: var(--nav-menu-height, 250px);
     min-height: 35rem;
     width: 75%;
-    padding: 4rem 0;
+    padding: 6rem 10rem;
+    background-color: white;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+    border: 2px solid #888 !important;
+    border-radius: 0.3rem;
+}
+
+div[role=form] {
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+input[type=submit] {
+    background: forestgreen;
+    color: whitesmoke;
+    padding: 10px 5rem !important;
+    border-radius: 2rem;
+    letter-spacing: .1rem;
+    box-shadow: 0px 3px 2px 2px #ccc;
+}
+
+div.hero-header-image {
+    position: relative;
+    top: -3vw;
+    width: 100%;
+    height: 20rem;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.content-box {
+    position: relative;
+}
+
+.content-box.hero {
+    top: -9vw;
+}
+
+div#hero-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-header-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.hero-header-text {
+    width: 75%;
+    color: var(--header-color);
+    padding: 2rem;
+    background-color: white;
+    border: 5px solid var(--header-color);
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin-bottom: 3rem;
+}
+
+.hero-header-text > h1 {
+    color: var(--header-color);
+    line-height: 1.43;
+    text-align: center;
+    margin: 0;
+}
+
+.hero-header-text > h4 {
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    margin: .4rem;
+}
+
+.hero-header-text > p {
+    color: var(--header-color);
+    text-align: center;
+    font-size: 16pt;
+}
+
+/* About page */
+
+div#about-child-page-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.child-page {
+    height: 25vw;
+    margin: 0;
+    padding: 0;
+}
+
+.child-page:nth-child(odd) > .child-page-image {
+    float: left;
+}
+
+.child-page:nth-child(even) > .child-page-image {
+    float: right;
+}
+
+.child-page-image {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.child-page-excerpt-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    height: 100%;
+}
+
+.child-page-excerpt {
+    max-width: 50%;
+}
+
+.child-page-excerpt-text {
+    margin: 3rem auto;
+}
+
+a.learn-more-button {
+    border: 1px solid var(--learn-more-button-color);
+    border-radius: .3rem;
+    padding: 0.5rem 1.5rem;
+    color: var(--learn-more-button-color);
+    text-transform: uppercase;
+}
+
+a.learn-more-button:hover {
+    background-color: var(--learn-more-button-color);
+    color: whitesmoke;
+}
+
+/* Carousel */
+.fcab-carousel-item {
+    opacity: .5;
+}
+
+.fcab-carousel-item:hover {
+    opacity: 1;
+}
+
+.fcab-carousel-item > a {
+    opacity: .5;
+    padding: 1rem;
+}
+
+.fcab-carousel-item > a:hover {
+    opacity: 1;
+    color: black;
+}
+
+.fcab-carousel-image {
+    width: 15rem;
+    height: 15rem;
+    padding: 1rem;
+    border-radius: .8rem;
+    background-size: cover;
 }

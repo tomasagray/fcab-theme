@@ -1,0 +1,137 @@
+/**
+Project custom post type styles
+ */
+
+:root {
+    --sort-tag-color: #da007c;
+    --project-card-border-radius: .6rem;
+}
+
+.project-heading {
+    text-align: center;
+}
+
+.project-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 3rem;
+}
+
+.project-sort-tag {
+    text-transform: uppercase;
+    border-radius: 5rem;
+    color: var(--sort-tag-color);
+    font-size: 16pt;
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem;
+}
+
+.project-sort-tag.current {
+    border: 1px solid var(--sort-tag-color);
+}
+
+.project-sort-tag:hover {
+    background-color: var(--sort-tag-color);
+    color: whitesmoke;
+}
+
+.project-tag-data {
+    margin: 4rem auto;
+}
+
+.project-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2.2rem 0;
+    justify-content: space-between;
+}
+
+.project-card {
+    border-radius: var(--project-card-border-radius);
+    box-shadow: 0 3px 3px 3px #ccc;
+    margin: 0 0 6rem 0;
+    min-width: 25vw;
+}
+
+.project-card-image {
+    height: 20vw;
+    border-radius: var(--project-card-border-radius) var(--project-card-border-radius) 0 0;
+}
+
+h3.project-title {
+    font-size: 21pt;
+    color: black;
+    margin: 0;
+}
+
+p.project-description {
+    margin: 2rem auto;
+    font-size: 14pt;
+    font-weight: 100;
+    line-height: 1.6rem;
+    color: #333;
+    min-height: 5rem;
+}
+
+a.project-link {
+    font-size: 1rem;
+    color: forestgreen;
+    font-weight: bold;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid green;
+    border-radius: 4rem;
+    text-transform: uppercase;
+}
+
+a.project-link:hover {
+    background-color: forestgreen;
+    color: whitesmoke;
+}
+
+.project-card-description {
+    padding: 2rem;
+}
+
+.project-container {
+    margin: 2rem;
+}
+
+
+
+.project-heading h1 {
+    text-align: left;
+
+}
+
+.project-tag-container {
+    display: flex;
+}
+
+.project-tag {
+    background-color: #84D89B;
+    color: sienna;
+    border-radius: 3px;
+    padding: .3rem 1rem;
+    margin-right: 1rem;
+}
+
+.project-content {
+    margin: 2rem auto;
+}
+
+.project-featured-image {
+    margin: auto auto 2rem;
+    max-height: 50rem;
+    max-width: 50rem;
+}
+
+.project-tag-title {
+    font-size: 24pt;
+}
+
+p.project-tag-description {
+    font-size: 16pt;
+    line-height: 1.8rem;
+    color: black;
+}

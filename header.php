@@ -23,11 +23,15 @@ $current_url =
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo $theme_uri; ?>/js/vendor/slick/slick.min.js"></script>
     <script src="<?php echo $theme_uri; ?>/js/fcab.js"></script>
     <?php wp_head(); ?>
-    <link href="<?php echo $theme_uri; ?>/fusion-styles.css" rel="stylesheet">
+    <link href="<?php echo $theme_uri; ?>/css/fusion-styles.css" rel="stylesheet">
+    <link href="<?php echo $theme_uri; ?>/css/fusion-overrides.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/style.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 660px)">
+    <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
     <script>
         $(function () {
             // Main menu handling
@@ -57,12 +61,19 @@ $current_url =
 <header>
     <div id="menu-wrapper">
         <div id="menu-container">
-            <img src="<?php echo $theme_uri; ?>/img/menu_hamburger.png" alt="Open mobile menu" class="mobile-menu-button" id="mobile-menu-button"/>
-            <img src="<?php echo $theme_uri; ?>/img/menu_close.png" alt="Close mobile menu" class="mobile-menu-button" id="mobile-menu-close-button"/>
+            <div id="mobile-menu-button-container">
+                <img src="<?php echo $theme_uri; ?>/img/menu_hamburger.png" alt="Open mobile menu" class="mobile-menu-button" id="mobile-menu-button"/>
+                <img src="<?php echo $theme_uri; ?>/img/menu_close.png" alt="Close mobile menu" class="mobile-menu-button" id="mobile-menu-close-button"/>
+            </div>
 
-            <a href="<?php echo get_site_url(); ?>"> <img src="<?php echo $theme_uri; ?>/img/fcab_logo_small.png"
+            <a href="<?php echo get_site_url(); ?>">
+                <img src="<?php echo $theme_uri; ?>/img/fcab_logo_small.png"
                                                           alt="FCAB | The Foundation for Charitable Activities in Bangladesh"
-                                                          id="header-logo"/> </a>
+                                                          id="header-logo"/>
+                <img src="<?php echo $theme_uri; ?>/img/fcab_logo_mobile.png"
+                                                          alt="FCAB | The Foundation for Charitable Activities in Bangladesh"
+                                                          id="header-logo-mobile"/>
+            </a>
             <div id="menu-outer-container">
                 <?php
                 wp_nav_menu([

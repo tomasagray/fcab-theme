@@ -4046,7 +4046,6 @@ html[xmlns] .flexslider .slides {
 }
 #layerslider-wrapper .ls-shadow-bottom {
     position: absolute;
-    background-image: url(assets/images/shadow-bottom.png);
     background-repeat: no-repeat;
     background-position: bottom center;
     height: 32px;
@@ -4725,7 +4724,6 @@ Table of Contents
     border: none;
     color: transparent;
     text-indent: 100000px;
-    background: url(assets/images/ajax-loader.gif ) center center no-repeat;
 }
 .fusion-slider-loading,
 .fusion-slider-loading:after {

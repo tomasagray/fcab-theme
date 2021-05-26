@@ -82,3 +82,6 @@ function register_social_menu()
 add_action('init', 'fcab\theme\register_main_menu');
 add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');
+// enable features
+add_theme_support( 'post-thumbnails' );
+add_post_type_support( 'page', 'excerpt' );

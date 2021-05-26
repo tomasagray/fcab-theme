@@ -37,6 +37,12 @@ img#header-logo {
     min-height: 4rem;
 }
 
+img#header-logo-mobile {
+    display: none;
+    height: 4rem;
+    min-height: 4rem;
+}
+
 #nav-menu-main {
     display: flex;
     justify-content: center;
@@ -91,13 +97,13 @@ li.menu-item > a:hover {
     color: black;
 }
 
-li.menu-item-current {
+li.current-menu-item > a {
     color: forestgreen;
 }
 
 li.menu-item-donate > a {
     color: whitesmoke;
-    background-color: forestgreen;
+    background-color: var(--highlight-button-color);
     box-shadow: 2px 3px 3px 3px #ccc;
     border: 0;
 }

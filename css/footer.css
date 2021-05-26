@@ -1,7 +1,11 @@
-
 /**
 Footer
  */
+
+footer {
+    border-top: 1px solid #ddd;
+}
+
 div#fcab-footer-wrapper {
     margin: 0;
     padding: 3rem;
