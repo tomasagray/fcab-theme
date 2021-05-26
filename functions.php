@@ -2,6 +2,8 @@
 
 namespace fcab\theme;
 
+require_once 'custom-shortcodes.php';
+
 const MAIN_MENU = 'main-menu';
 const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';

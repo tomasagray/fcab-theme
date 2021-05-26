@@ -3,6 +3,27 @@ h1 {
     font-size: 32pt;
 }
 
+/* Shortcodes */
+.impact-metric-row {
+    flex-flow: column;
+}
+
+.impact-metric-container {
+    width: revert;
+}
+
+.impact-metric-data {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+p.impact-metric-description {
+    height: revert;
+}
+
+/** Mobile menu */
 img#mobile-menu-button {
     display: block;
 }
@@ -172,4 +193,10 @@ span.project-tag {
 .fusion-two-third,
 .fusion-one-half {
     width: revert;
+}
+
+/* Wordpress overrides */
+.wp-block-embed {
+    width: 100%;
+    margin: 3rem 0;
 }

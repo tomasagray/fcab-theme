@@ -30,6 +30,43 @@ Use it to make something cool, have fun, and share what you've learned with othe
     --header-color: #006011;
 }
 
+/* Shortcodes */
+.impact-metric-row {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-flow: row;
+    margin: 5rem auto;
+}
+
+.impact-metric-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 32%;
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 3px 3px 3px #ccc;
+    margin: 1rem;
+    text-align: center;
+}
+
+.impact-metric-data {
+    font-size: 42pt;
+    color: #ec0578;
+    margin: auto;
+    text-align: center;
+}
+
+p.impact-metric-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    padding: 1rem 2rem;
+    height: 4vw;
+}
+
 /* Base styles */
 body {
     margin: 0;
