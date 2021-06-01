@@ -1,0 +1,9 @@
+div#content-container {
+    width: 100%;
+}
+
+.project-card {
+    min-width: 40%;
+}
+
+

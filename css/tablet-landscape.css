@@ -1,0 +1,60 @@
+/* Nav menu */
+img#header-logo {
+    display: none;
+}
+
+img#header-logo-mobile {
+    display: revert;
+    min-width: 6rem;
+    margin: 2rem;
+    left: -3rem;
+    position: relative;
+}
+
+li.menu-item {
+    margin: 0;
+}
+
+/* Content */
+div#content-container {
+    width: 100%;
+    padding: 0;
+}
+
+.content-box {
+    padding: 5rem 5rem;
+}
+
+.content-box.hero {
+    top: -20vw;
+}
+
+.hero-header-image {
+    top: 5vw;
+}
+
+p.child-page-excerpt-text {
+    max-height: 6vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
+}
+
+.child-page-excerpt {
+    max-width: 100%;
+    padding: 1rem 3rem;
+}
+
+/* Projects */
+.project-tags-container > form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-card {
+    min-width: 40vw;
+    flex: 0 1 50%;
+}

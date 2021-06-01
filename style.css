@@ -52,19 +52,29 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .impact-metric-data {
-    font-size: 42pt;
     color: #ec0578;
     margin: auto;
     text-align: center;
 }
 
+h3.impact-metric-data {
+    font-size: 3rem;
+}
+
+h4.impact-metric-data {
+    font-size: 1.8rem;
+}
+
+h5.impact-metric-data {
+    font-size: .5rem;
+}
+
 p.impact-metric-description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: -webkit-box;
     text-overflow: ellipsis;
-    padding: 1rem 2rem;
-    height: 4vw;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* Base styles */
@@ -220,16 +230,20 @@ div#about-child-page-container {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
     height: 100%;
+    padding: 3rem;
 }
 
 .child-page-excerpt {
-    max-width: 50%;
+    max-width: 100%;
 }
 
 .child-page-excerpt-text {
     margin: 3rem auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 a.learn-more-button {

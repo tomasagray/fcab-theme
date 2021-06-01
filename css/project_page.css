@@ -25,6 +25,7 @@ Project custom post type styles
     font-size: 16pt;
     padding: 0.4rem 0.8rem;
     margin: 0.5rem;
+    white-space: nowrap;
 }
 
 .project-sort-tag.current {

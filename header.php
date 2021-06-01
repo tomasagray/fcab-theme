@@ -29,7 +29,10 @@ $current_url =
     <link href="<?php echo $theme_uri; ?>/css/fusion-styles.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/css/fusion-overrides.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/style.css" rel="stylesheet">
-    <link href="<?php echo $theme_uri; ?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 660px)">
+    <link href="<?php echo $theme_uri; ?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 599px)">
+    <link href="<?php echo $theme_uri; ?>/css/tablet-portrait.css" rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 899px)">
+    <link href="<?php echo $theme_uri; ?>/css/tablet-landscape.css" rel="stylesheet" media="screen and (min-width: 900px) and (max-width: 1199px)">
+    <link href="<?php echo $theme_uri; ?>/css/laptop.css" rel="stylesheet" media="screen and (min-width: 1200px) and (max-width: 1799px)">
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
     <script>

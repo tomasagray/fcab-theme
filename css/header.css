@@ -29,18 +29,21 @@ div#menu-outer-container {
 
 img.mobile-menu-button {
     display: none;
-    width: 2rem;
+    width: 3rem;
+    margin-left: 2rem;
 }
 
 img#header-logo {
     height: 4rem;
     min-height: 4rem;
+    min-width: 12rem;
 }
 
 img#header-logo-mobile {
     display: none;
     height: 4rem;
     min-height: 4rem;
+    margin-right: 2rem;
 }
 
 #nav-menu-main {
@@ -58,6 +61,8 @@ ul.nav-main-menu {
     justify-content: center;
     align-items: center;
     list-style: none;
+    margin: 0;
+    padding-inline-start: 0;
 }
 
 ul.sub-menu {
