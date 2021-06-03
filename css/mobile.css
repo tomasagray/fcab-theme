@@ -66,6 +66,11 @@ ul#nav-main-menu {
     display: table;
 }
 
+li.menu-item > a {
+    padding: 2rem 10rem;
+    font-size: x-large;
+}
+
 /* Content */
 div#content-wrapper {
     overflow: hidden;
@@ -87,6 +92,10 @@ div#content-container {
 
 .hero-header-image {
     top: 5vw;
+}
+
+.hero-header-text {
+    width: 100%;
 }
 
 ul.social-button-menu > li {
@@ -148,12 +157,6 @@ div#about-page-container {
 .project-tags-container {
     margin: 3rem auto;
     flex-wrap: wrap;
-}
-
-.project-tags-container > form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 a.project-sort-tag {

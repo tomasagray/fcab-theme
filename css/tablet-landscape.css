@@ -15,6 +15,10 @@ li.menu-item {
     margin: 0;
 }
 
+li.menu-item > a {
+    padding: 2rem 10rem;
+}
+
 /* Content */
 div#content-container {
     width: 100%;
@@ -33,6 +37,10 @@ div#content-container {
     top: 5vw;
 }
 
+.hero-header-text {
+    width: 100%;
+}
+
 p.child-page-excerpt-text {
     max-height: 6vw;
     overflow: hidden;
@@ -48,12 +56,6 @@ p.child-page-excerpt-text {
 }
 
 /* Projects */
-.project-tags-container > form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .project-card {
     min-width: 40vw;
     flex: 0 1 50%;

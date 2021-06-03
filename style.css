@@ -176,6 +176,15 @@ div#hero-header-container {
     margin-bottom: 3rem;
 }
 
+.hero-header-subtext {
+    font-family: sans-serif;
+    font-size: 21pt;
+    color: var(--header-color);
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1.2rem;
+}
+
 .hero-header-text > h1 {
     color: var(--header-color);
     line-height: 1.43;
@@ -315,4 +324,11 @@ div#main-page-project-carousel {
     padding: 1rem;
     border-radius: .8rem;
     background-size: cover;
+}
+
+/* Projects */
+.project-tags-container > form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

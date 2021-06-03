@@ -108,6 +108,8 @@ a.project-link:hover {
 }
 
 .project-tag {
+    display: flex;
+    align-items: center;
     background-color: #84D89B;
     color: sienna;
     border-radius: 3px;
@@ -122,7 +124,7 @@ a.project-link:hover {
 .project-featured-image {
     margin: auto auto 2rem;
     max-height: 50rem;
-    max-width: 50rem;
+    max-width: 100%;
 }
 
 .project-tag-title {
