@@ -260,8 +260,39 @@ a.learn-more-button:hover {
 }
 
 /* Carousel */
+.fcab-carousel-container {
+    display: flex;
+    align-items: center;
+}
+
+.fcab-carousel-prev-button,
+.fcab-carousel-next-button {
+    padding: 0 2rem;
+}
+
+.fcab-carousel-prev-button:hover,
+.fcab-carousel-next-button:hover {
+    cursor: pointer;
+}
+
+div#main-page-project-carousel {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+.fcab-carousel-item-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    left: 0;
+}
+
 .fcab-carousel-item {
     opacity: .5;
+    min-width: 33%;
+    position: relative;
 }
 
 .fcab-carousel-item:hover {

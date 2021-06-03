@@ -205,3 +205,29 @@ span.project-tag {
     width: 100%;
     margin: 3rem 0;
 }
+
+
+/* Carousel */
+.fcab-carousel-container {
+    background-color: whitesmoke;
+    border-radius: 1rem;
+}
+
+.fcab-carousel {
+    overflow-x: scroll !important;
+}
+
+.fcab-carousel-prev-button,
+.fcab-carousel-next-button {
+    display: none;
+}
+
+.fcab-carousel-item-wrapper {
+    width: revert;
+}
+
+.fcab-carousel-item {
+    opacity: 1;
+    min-width: revert;
+    margin: 1rem;
+}
