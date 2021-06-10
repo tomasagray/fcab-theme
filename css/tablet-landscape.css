@@ -16,7 +16,8 @@ li.menu-item {
 }
 
 li.menu-item > a {
-    padding: 2rem 10rem;
+    padding: 1rem;
+    margin: 1rem;
 }
 
 /* Content */
@@ -34,7 +35,7 @@ div#content-container {
 }
 
 .hero-header-image {
-    top: 5vw;
+    top: 4vw !important;
 }
 
 .hero-header-text {

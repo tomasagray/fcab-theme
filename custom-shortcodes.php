@@ -2,7 +2,7 @@
 
 namespace fcab\theme;
 
-// Impact metric shortcode
+// Impact metric
 function impact_metric($attrs = array(), $content = null)
 {
     // set up default parameters
@@ -31,3 +31,13 @@ function impact_metric_row($attrs = array(), $content = null)
 
 add_shortcode('impact-metric-row', 'fcab\theme\impact_metric_row');
 add_shortcode('impact-metric', 'fcab\theme\impact_metric');
+
+// Volunteer quote
+function volunteer_quote($attrs = array(), $content = null)
+{
+    extract(shortcode_atts(array(
+        'data' => ' '
+    ), $attrs), EXTR_OVERWRITE);
+
+    
+}

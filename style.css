@@ -15,12 +15,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "css/footer.css";
 @import "css/project_page.css";
 
-/* Wordpress overrides */
-.wp-block-embed {
-    margin: 5rem;
-    text-align: center;
-}
-
 /* Variables */
 :root {
     --nav-menu-height: 5rem;
@@ -28,6 +22,22 @@ Use it to make something cool, have fun, and share what you've learned with othe
     --highlight-button-color: forestgreen;
     --learn-more-button-color: darkblue;
     --header-color: #006011;
+}
+
+/* Wordpress overrides */
+.wp-block-embed {
+    margin: 5rem;
+    text-align: center;
+}
+
+.nav-previous > a,
+.nav-next > a {
+    font-size: large;
+    font-weight: bold;
+    color: var(--highlight-button-color);
+    border-radius: 1rem;
+    background-color: whitesmoke;
+    padding: .5rem;
 }
 
 /* Shortcodes */
@@ -205,6 +215,14 @@ div#hero-header-container {
     font-size: 16pt;
 }
 
+a.link-button {
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
 /* About page */
 
 div#about-child-page-container {
@@ -331,4 +349,30 @@ div#main-page-project-carousel {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* Search */
+.search-results-container {
+    margin: 2rem auto;
+}
+
+.search-result-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.search-result-container:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+a.search-result-title {
+    display: block;
+    font-size: large;
+    font-weight: bold;
+}
+
+a.search-result-link {
+    font-style: italic;
 }
