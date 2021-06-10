@@ -1,5 +1,7 @@
 <?php
 
+namespace fcab\theme;
+
 get_header();
 ?>
     <div class="content-box">

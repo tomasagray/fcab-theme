@@ -108,6 +108,17 @@ a.project-link {
     white-space: nowrap;
 }
 
+/* Contact */
+div#contact-form {
+    width: 100%;
+    float: revert;
+}
+
+.volunteer-quotes-container {
+    float: revert;
+    width: 100%;
+}
+
 /* Carousel */
 .fcab-carousel-container {
     background-color: whitesmoke;

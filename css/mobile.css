@@ -183,6 +183,17 @@ span.project-tag {
     margin-bottom: .5rem;
 }
 
+/* Contact */
+div#contact-form {
+    width: 100%;
+    float: revert;
+}
+
+.volunteer-quotes-container {
+    float: revert;
+    width: 100%;
+}
+
 /* Fusion overrides */
 .fusion-row {
     display: flex;
