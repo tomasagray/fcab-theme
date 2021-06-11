@@ -25,6 +25,7 @@ img#footer-logo {
     height: 4rem;
 }
 
+/* Footer menu */
 ul#footer-nav-menu {
     list-style: none;
     display: flex;
@@ -46,6 +47,11 @@ ul#footer-nav-menu > li > a {
 ul#footer-nav-menu a:hover {
     background-color: var(--footer-hover-color);
     color: black;
+}
+
+/* Social media menu */
+.social-media-menu {
+    display: none; /* Randi requests hidden */
 }
 
 h4#social-heading {

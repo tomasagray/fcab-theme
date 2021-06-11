@@ -40,17 +40,19 @@ define("THEME_URI", get_template_directory_uri());
                 </ul>
             </div>
             <hr/>
-            <h4 id="social-heading">Keep up with our work</h4>
-            <div id="social-button-container">
-                <?php
-                $social_menu = get_menu(SOCIAL_MENU);
-                if ($social_menu) {
-                    $social_menu_html = get_social_menu_html($social_menu);
-                    echo $social_menu_html;
-                } else {
-                    handle_no_social_menu();
-                }
-                ?>
+            <div class="social-media-menu">
+                <h4 id="social-heading">Keep up with our work</h4>
+                <div id="social-button-container">
+                    <?php
+                    $social_menu = get_menu(SOCIAL_MENU);
+                    if ($social_menu) {
+                        $social_menu_html = get_social_menu_html($social_menu);
+                        echo $social_menu_html;
+                    } else {
+                        handle_no_social_menu();
+                    }
+                    ?>
+                </div>
             </div>
             <p id="copyright">&copy; FCAB <?php echo date('Y'); ?></p>
         </div>

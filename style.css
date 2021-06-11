@@ -346,6 +346,10 @@ a.learn-more-button:hover {
 
 
 /* Projects */
+.project-tag-container {
+    display: none; /* Randi requests hidden */
+}
+
 .project-tags-container > form {
     display: flex;
     flex-wrap: wrap;

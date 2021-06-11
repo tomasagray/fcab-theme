@@ -18,7 +18,7 @@ $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
         <div id="mission-statement" class="hero-header-container">
             <div class="hero-header-text">
                 <h1>Foundation for Charitable Activities in Bangladesh</h1>
-                <h3 class="hero-header-subtext">Who are we?</h3>
+            </div>
             </div>
 
             <?php the_content(); ?>

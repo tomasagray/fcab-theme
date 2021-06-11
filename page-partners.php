@@ -7,8 +7,16 @@ get_header();
     <style>
         .fusion-imageframe {
             padding: 2rem;
-            border: 2px solid var(--sort-tag-color);
             border-radius: 1rem;
+        }
+
+        .major-donor-sub {
+            display: flex;
+            align-items: center;
+        }
+
+        .major-donor-sub > img {
+            margin: 2rem;
         }
     </style>
     <div class="content-box">

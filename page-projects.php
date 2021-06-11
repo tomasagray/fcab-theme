@@ -109,7 +109,7 @@ get_header();
 ?>
 
     <div class="content-box">
-        <h1 class="project-heading">Our Projects</h1>
+        <h1 class="project-heading">Our Programs</h1>
         <script type="text/javascript">
             function submitTagFilter($tagName) {
                 // Set hidden input
