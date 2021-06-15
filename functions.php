@@ -3,24 +3,43 @@
 namespace fcab\theme;
 
 require_once 'custom-shortcodes.php';
+require_once 'Menu.php';
+require_once 'MenuItem.php';
 
 const MAIN_MENU = 'main-menu';
 const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
 
+use fcab\theme\Menu;
+use fcab\theme\MenuItem;
+
 
 function get_menu($location)
 {
     if (($locations = get_nav_menu_locations()) && isset($locations[$location])) {
-        $social_menu = wp_get_nav_menu_object($locations[$location]);
-        return wp_get_nav_menu_items($social_menu->term_id);
+        $menu = wp_get_nav_menu_object($locations[$location]);
+        return wp_get_nav_menu_items($menu->term_id);
     }
     return false;
 }
 
-function get_main_menu_html(array $main_menu): string
+/**
+ * Translate WP menu array to complex object
+ * @param $wp_menu_items array WordPress-generated menu array
+ */
+function get_menu_object(array $wp_menu_items, string $menu_title): Menu
 {
-
+    $menu = new Menu(null, $menu_title);
+    foreach ($wp_menu_items as $menu_item) {
+        $item = new MenuItem($menu_item->ID, $menu_item->url, $menu_item->title, null);
+        $parent_id = (int)$menu_item->menu_item_parent;
+        if ($parent_id !== 0) {
+            $menu->addSubmenuItem($parent_id, $item);
+        } else {
+            $menu->addItem($item);
+        }
+    }
+    return $menu;
 }
 
 function get_social_menu_html(array $social_menu): string

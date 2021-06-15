@@ -5,7 +5,7 @@ namespace fcab;
 //use fcab\model\FCABDonor;
 use WP_Query;
 
-const DONATIONS_PAGE_TITLE = 'Donate';
+const ORIGINAL_MEMBERS_PAGE = 'Original Members';
 const DONATION_FIELD_NAME = 'fcab_cpt_donor_total_donations';
 const POST_TYPE = 'fcab_cpt_donor';
 
@@ -69,13 +69,15 @@ $q_args = [
 $loop = new WP_Query($q_args);
 
 get_header();
-
-// Print donor page
-$donations_page = get_page_by_title(DONATIONS_PAGE_TITLE);
 ?>
     <div class="content-box">
-        <h1 style="clear:both;">Our Donors</h1>
+        <?php
+        $members_page = get_page_by_title(ORIGINAL_MEMBERS_PAGE);
+        $link = get_permalink($members_page->ID);
+        ?>
         <div id="donors-container">
+            <h1 style="display: inline;">Our Donors</h1>
+            <a href="<?php echo $link; ?>" class="link-button" style="float: right;"><?php echo $members_page->post_title; ?></a>
             <?php
             $donors = $loop->get_posts();
             $donor_groups = partition_donors($donors);

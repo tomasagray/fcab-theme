@@ -1,3 +1,6 @@
+// Mobile menu handling
+// ====================================
+
 let openMobileMenu = function ($menu, $openButton, $closeButton) {
     $menu.css('display', 'flex');
 
@@ -35,3 +38,4 @@ let closeMobileMenu = function ($menu, $openButton, $closeButton) {
         opacity: 1
     }, 250, function() {});
 };
+

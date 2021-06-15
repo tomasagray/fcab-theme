@@ -9,9 +9,9 @@ namespace fcab\theme;
 use const fcab\theme\MAIN_MENU;
 
 $theme_uri = get_template_directory_uri();
-$current_url =
-    (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
-    . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+//$current_url =
+//    (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+//    . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -20,7 +20,6 @@ $current_url =
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="<?php echo $theme_uri; ?>/js/vendor/slick/slick.min.js"></script>
@@ -37,10 +36,8 @@ $current_url =
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
     <script>
         $(function () {
-            // Main menu handling
-            // ====================================
             let handleMenuClick = function () {
-                $menu = $('#nav-menu-main');
+                $menu = $('#menu-outer-container');
                 $openButton = $('#mobile-menu-button');
                 $closeButton = $('#mobile-menu-close-button');
 
@@ -55,6 +52,32 @@ $current_url =
             });
             $('#mobile-menu-close-button').on('click', function () {
                 handleMenuClick();
+            });
+
+            // Initialize JQueryUI menu
+            $('#nav-main-menu').menu({
+                classes: {
+                    'ui-menu': 'nav-main-menu',
+                    'ui-menu-item': 'menu-item',
+                },
+                position: { my: 'center bottom', at: 'center top'}
+            });
+
+            $('img.mobile-submenu-arrow').on('click', function() {
+                let submenu = $(this).parent().siblings().select('ul').first();
+                if (submenu.hasClass('open')) {
+                    submenu.removeClass('open');
+                    $(this).css('transform', 'rotate(0deg)')
+                    submenu.animate({height: 0});
+                } else {
+                    submenu.addClass('open');
+                    $(this).css('transform', 'rotate(90deg)')
+                    submenu.animate({
+                        height: submenu.prop('scrollHeight')
+                    }, 500, function () {
+                        submenu.css('position', 'initial');
+                    });
+                }
             });
         });
     </script>
@@ -78,16 +101,13 @@ $current_url =
                                                           id="header-logo-mobile"/>
             </a>
             <div id="menu-outer-container">
-                <?php
-                wp_nav_menu([
-                    'theme_location' => MAIN_MENU,
-                    'menu_class' => 'nav-main-menu',
-                    'menu_id' => 'nav-main-menu',
-                    'current-menu-item' => 'menu-item-current',
-                    'container_class' => 'main-nav-menu-container',
-                    'container_id' => 'nav-menu-main'
-                ]);
-                ?>
+                <div id="nav-menu-main" class="main-nav-menu-container">
+                    <?php
+                    $menu_array = get_menu(MAIN_MENU);
+                    $menu = get_menu_object($menu_array, 'nav-main-menu');
+                    echo $menu->toHtml('nav-main-menu');
+                    ?>
+                </div>
             </div>
         </div>
         <script>

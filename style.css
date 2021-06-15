@@ -20,6 +20,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
     --nav-menu-height: 5rem;
     --footer-hover-color: forestgreen;
     --highlight-button-color: forestgreen;
+    --highlight-button-hover-color: yellowgreen;
     --learn-more-button-color: darkblue;
     --header-color: #006011;
 }
@@ -216,11 +217,19 @@ div#hero-header-container {
 }
 
 a.link-button {
-    background-color: whitesmoke;
-    padding: 1rem;
-    border-radius: .5rem;
-    font-size: 18pt;
+    color: whitesmoke;
+    background-color: var(--highlight-button-color);
+    box-shadow: 2px 3px 3px 3px #ccc;
+    padding: 2rem 4rem;
     font-weight: bold;
+    font-size: large;
+    border-radius: .5rem;
+    letter-spacing: .2rem;
+}
+
+a.link-button:hover {
+    background-color: var(--highlight-button-hover-color);
+    color: black;
 }
 
 /* Carousel */
@@ -282,6 +291,10 @@ div#main-page-project-carousel {
 }
 
 /* About page */
+
+div#about-content-container {
+    margin: 4rem;
+}
 
 div#about-child-page-container {
     width: 100%;
