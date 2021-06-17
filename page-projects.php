@@ -7,15 +7,16 @@ use WP_Query;
 const PROJECTS_DISPLAYED = 6;
 const TAGS = 'fcab_project_tag';
 const POST_TYPE = 'fcab_cpt_project';
+const PROJECT_TAGS_MENU = 'tags-menu';
 
 
 function get_query_url(array $param): string
 {
     $url = $_SERVER['REQUEST_URI'];
     if (strpos($url, '?')) {
-        if (strpos($url, 'tag=')) {
+        if (strpos($url, 'project-tag=')) {
             $new_param = 'project-tag=' . $param['tag'];
-            $url = preg_replace('/project-tag=[\w]+/', $new_param, $url);
+            $url = preg_replace('/project-tag=[\w+=%-]+/', $new_param, $url);
         } else {
             $url .= '&project-tag=' . $param['tag'];
         }
@@ -32,7 +33,7 @@ function get_query_url(array $param): string
 function get_query_args($current_tag): array
 {
     // for pagination
-    $paged = (get_query_var('paged')) ?: 1;
+    $paged = get_query_var('page', 1);
     $q_args = [
         'post_type' => POST_TYPE,
         'post_status' => 'publish',
@@ -44,7 +45,7 @@ function get_query_args($current_tag): array
     if ($current_tag !== null) {
         $q_args['tax_query'] = array([
             'taxonomy' => TAGS,
-            'terms' => $current_tag,
+            'terms' => $current_tag->name,
             'field' => 'name'
         ]);
     }
@@ -52,17 +53,18 @@ function get_query_args($current_tag): array
 }
 
 /**
- * @param array $terms
+ * @param array $tags
  * @return mixed
  */
-function get_current_tag(array $terms)
+function get_current_tag()
 {
+    $tags = get_terms(['taxonomy' => TAGS]);
     $current_tag = null;
-    if (isset($_POST['project-tag'])) {
-        $tag_param = $_POST['project-tag'];
-        foreach ($terms as $term) {
-            if ($term->name === $tag_param) {
-                $current_tag = $term;
+    if (isset($_GET['project-tag'])) {
+        $tag_param = $_GET['project-tag'];
+        foreach ($tags as $tag) {
+            if ($tag->name === $tag_param) {
+                $current_tag = $tag;
             }
         }
     }
@@ -70,38 +72,29 @@ function get_current_tag(array $terms)
 }
 
 /**
- * @param $terms
+ * @param $menu_items
  * @param null $current_term
  */
-function print_tags_menu($terms, $current_term = null): void
+function print_tags_menu($menu_items, $current_term = null): void
 {
     echo '<div class="project-tags-container">';
     echo '<form name="filter-tags" id="filter-tags" method="POST" action="' . $_SERVER['REQUEST_URI'] . '">';
     echo '<input type="hidden" name="project-tag" id="project-tag" />';
-    foreach ($terms as $term) {
-        $filter_url = get_query_url(['tag' => $term->name]);
-        $parent_list = get_term_parents_list(
-            $term->term_id,
-            TAGS,
-            ['separator' => '--', 'link' => false]
-        );
-        $term_parents = explode('--', $parent_list);
-        if (!(in_array('Other', $term_parents, true))) {
+    foreach ($menu_items as $menu_item) {
+        $filter_url = get_query_url(['tag' => $menu_item->title]);
             echo '<a class="project-sort-tag';
-            if ($term === $current_term) {
+            if ($menu_item->title === $current_term->name) {
                 echo ' current';
             }
-            echo '" href="Javascript:submitTagFilter(\'' . $term->name . '\');">';
-            echo $term->name . '</a>';
-        }
+            echo '" href="'. $filter_url .'">';
+            echo $menu_item->title . '</a>';
     }
-    echo '<a class="project-sort-tag" href="Javascript:submitTagFilter(\'Other\');">Other</a>';
     echo '</form>';
     echo '</div>';
 }
 
-$terms = get_terms(['taxonomy' => TAGS]);
-$current_tag = get_current_tag($terms);
+$tags_menu = get_menu(PROJECT_TAGS_MENU); //get_terms(['taxonomy' => TAGS]);
+$current_tag = get_current_tag();
 $q_args = get_query_args($current_tag);
 $loop = new WP_Query($q_args);
 
@@ -110,17 +103,8 @@ get_header();
 
     <div class="content-box">
         <h1 class="project-heading">Our Programs</h1>
-        <script type="text/javascript">
-            function submitTagFilter($tagName) {
-                // Set hidden input
-                $('#project-tag').val($tagName);
-                // Submit form
-                $('#filter-tags').submit();
-            }
-        </script>
-
         <?php
-        print_tags_menu($terms, $current_tag);
+        print_tags_menu($tags_menu, $current_tag);
 
         if ($current_tag !== null) {
             echo '<div class="project-tag-data">';
@@ -131,7 +115,6 @@ get_header();
         ?>
 
         <h2>Current Projects</h2>
-
         <?php
         if ($loop->have_posts()): ?>
             <div class="project-card-container">
@@ -158,8 +141,8 @@ get_header();
                 endwhile; ?>
             </div>
             <div class="pagination-container">
-                <div class="nav-previous alignleft"><?php $loop->previous_posts_link('Prev.', $loop->max_num_pages); ?></div>
-                <div class="nav-next alignright"><?php next_posts_link('Next', $loop->max_num_pages); ?></div>
+                <div class="nav-previous alignleft"><?php $loop->previous_posts_link('Prev.'); ?></div>
+                <div class="nav-next alignright"><?php $loop->next_posts_link('Next'); ?></div>
             </div>
         <?php else:
             echo '<p>There are currently no projects. Please check back soon.</p>';

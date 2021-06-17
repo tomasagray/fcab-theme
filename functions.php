@@ -9,6 +9,7 @@ require_once 'MenuItem.php';
 const MAIN_MENU = 'main-menu';
 const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
+const PROJECT_TAGS_MENU = 'tags-menu';
 
 use fcab\theme\Menu;
 use fcab\theme\MenuItem;
@@ -100,9 +101,16 @@ function register_social_menu()
     register_nav_menu(SOCIAL_MENU, __('Social Networking Menu'));
 }
 
+function register_project_tags_menu()
+{
+    register_nav_menu(PROJECT_TAGS_MENU, __('Project Tags Menu'));
+
+}
+
 add_action('init', 'fcab\theme\register_main_menu');
 add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');
+add_action('init', 'fcab\theme\register_project_tags_menu');
 // enable features
 add_theme_support( 'post-thumbnails' );
 add_post_type_support( 'page', 'excerpt' );
