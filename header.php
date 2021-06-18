@@ -124,4 +124,8 @@ $theme_uri = get_template_directory_uri();
 </header>
 <section>
 <div id="content-wrapper">
+    <?php $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+    <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');">
+        &nbsp;
+    </div>
     <div id="content-container">

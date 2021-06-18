@@ -5,14 +5,7 @@ namespace fcab\theme;
 use WP_Query;
 
 get_header();
-
-$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
 ?>
-
-    <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');">
-        &nbsp;
-    </div>
 
     <div class="content-box hero">
         <div id="mission-statement" class="hero-header-container">

@@ -97,19 +97,29 @@ div#content-container {
 }
 
 .content-box {
-    padding: 5rem 5rem;
+    padding: 2rem 5rem;
+    margin-top: var(--nav-menu-height)
 }
 
 .content-box.hero {
-    top: -20vw;
+    margin-top: var(--nav-menu-height);
 }
 
 .hero-header-image {
     top: 4vw !important;
+    width: 100% !important;
+    height: 15rem !important;
 }
 
 .hero-header-text {
     width: 100%;
+}
+
+a.link-button {
+    margin: 2rem;
+    padding: 2rem;
+    display: block;
+    text-align: center;
 }
 
 /* About page */

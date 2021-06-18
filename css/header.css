@@ -9,7 +9,7 @@ div#menu-wrapper {
     left: 0;
     max-height: var(--nav-menu-height, 250px);
     box-sizing: border-box;
-    box-shadow: 0 2px 7px 5px #aaa;
+    box-shadow: 0 2px 7px 5px rgba(15,15,15,0.5);
     width: 100%;
     z-index: 300;
     background-color: white;

@@ -5,7 +5,7 @@ img#header-logo {
 
 img#header-logo-mobile {
     display: revert;
-    min-width: 6rem;
+    min-width: 4rem;
     margin: 2rem;
     left: -3rem;
     position: relative;
@@ -30,12 +30,9 @@ div#content-container {
     padding: 5rem 5rem;
 }
 
-.content-box.hero {
-    top: -20vw;
-}
-
 .hero-header-image {
     top: 4vw !important;
+    width: 100% !important;
 }
 
 .hero-header-text {

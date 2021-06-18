@@ -146,22 +146,14 @@ input[type=submit] {
 }
 
 div.hero-header-image {
-    position: relative;
-    top: -3vw;
-    width: 100%;
+    position: absolute;
+    top: var(--nav-menu-height);
+    width: 75%;
     height: 20rem;
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
-}
-
-.content-box {
-    position: relative;
-}
-
-.content-box.hero {
-    top: -9vw;
 }
 
 div#hero-header-container {
@@ -230,6 +222,14 @@ a.link-button {
 a.link-button:hover {
     background-color: var(--highlight-button-hover-color);
     color: black;
+}
+
+.content-box {
+    position: relative;
+}
+
+.content-box.hero {
+    margin-top: 10rem;
 }
 
 /* Carousel */
