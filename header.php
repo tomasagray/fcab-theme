@@ -36,24 +36,6 @@ $theme_uri = get_template_directory_uri();
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
     <script>
         $(function () {
-            let handleMenuClick = function () {
-                $menu = $('#menu-outer-container');
-                $openButton = $('#mobile-menu-button');
-                $closeButton = $('#mobile-menu-close-button');
-
-                if ($menu.css('display') === 'none') {
-                    openMobileMenu($menu, $openButton, $closeButton);
-                } else {
-                    closeMobileMenu($menu, $openButton, $closeButton);
-                }
-            };
-            $('#mobile-menu-button').on('click', function () {
-                handleMenuClick();
-            });
-            $('#mobile-menu-close-button').on('click', function () {
-                handleMenuClick();
-            });
-
             // Initialize JQueryUI menu
             $('#nav-main-menu').menu({
                 classes: {
@@ -63,6 +45,7 @@ $theme_uri = get_template_directory_uri();
                 position: { my: 'center bottom', at: 'center top'}
             });
 
+            // Attach mobile menu button handlers
             $('img.mobile-submenu-arrow').on('click', function() {
                 let submenu = $(this).parent().siblings().select('ul').first();
                 if (submenu.hasClass('open')) {
@@ -79,6 +62,13 @@ $theme_uri = get_template_directory_uri();
                     });
                 }
             });
+            $('#mobile-menu-button').on('click', function () {
+                handleMenuClick();
+            });
+            $('#mobile-menu-close-button').on('click', function () {
+                handleMenuClick();
+            });
+
         });
     </script>
 </head>

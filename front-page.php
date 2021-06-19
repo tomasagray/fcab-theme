@@ -68,52 +68,9 @@ $projects = $loop->get_posts();
             </div>
         </div>
         <script>
-            class Carousel {
-                carousel;
-                wrapper;
-                items;
-                advance;
-
-                constructor(carousel) {
-                    this.carousel = carousel;
-                    this.wrapper = carousel.children('.fcab-carousel-item-wrapper');
-                    this.items = this.wrapper.children();
-                    this.advance = $(this.items[0]).outerWidth(true);
-                }
-
-                moveCarousel($direction = 'left') {
-                    let $carousel = this.carousel;
-                    let $wrapper = this.wrapper;
-                    let $advance = this.advance;
-                    let $items = this.items;
-
-                    // todo - pass ^obj as param
-                    return function() {
-                        let $multiplier = 1;
-                        let $current = $wrapper.css('left');
-                        let $currentLeft = parseInt($current.substr(0, $current.lastIndexOf('px')));
-                        if ($direction !== 'right' && $currentLeft === 0) {
-                            console.log('Carousel at max left')
-                            return;
-                        }
-                        if ($direction === 'right') {
-                            let $carouselRightEdge = $($carousel).offset().left + $($carousel).outerWidth();
-                            let $lastItem = $($items.slice(-1)[0]);
-                            let $lastItemRightEdge = $lastItem.offset().left + $lastItem.outerWidth();
-                            if ($lastItemRightEdge <= $carouselRightEdge) {
-                                console.log('Carousel at max right');
-                                return;
-                            }
-                            $multiplier = -1;
-                        }
-                        let $move = $currentLeft + ($multiplier * $advance);
-                        $wrapper.animate({left: $move + 'px'});
-                    }
-                }
-            }
-
             $(function () {
-                let carousel = new Carousel($('#main-page-project-carousel'));
+                let elem = $('#main-page-project-carousel');
+                let carousel = new Carousel(elem);
                 // todo - move to Carousel class
                 $('.fcab-carousel-prev-button').on('click', carousel.moveCarousel());
                 $('.fcab-carousel-next-button').on('click', carousel.moveCarousel('right'));
