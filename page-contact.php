@@ -9,8 +9,11 @@ const VOLUNTEER_QUOTES = 3;
 
 get_header();
 
-$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
 ?>
+    <?php $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+    <div class="hero-image-container">
+        <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+    </div>
     <div class="content-box hero">
         <div class="hero-header-container">
             <div class="hero-header-text">

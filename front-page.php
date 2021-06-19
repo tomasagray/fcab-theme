@@ -20,8 +20,8 @@ $loop = new WP_Query([
 ]);
 $projects = $loop->get_posts();
 ?>
-    <div id="about-header" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');">
-        &nbsp;
+    <div class="hero-image-container">
+        <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
     </div>
     <div id="homepage-content-box" class="content-box hero">
         <div id="hero-header-container" class="hero-header-container">

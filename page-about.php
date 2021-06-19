@@ -6,7 +6,10 @@ use WP_Query;
 
 get_header();
 ?>
-
+    <?php $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+    <div class="hero-image-container">
+        <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+    </div>
     <div class="content-box hero">
         <div id="mission-statement" class="hero-header-container">
             <div class="hero-header-text">
@@ -38,7 +41,7 @@ get_header();
                         <div class="child-page-excerpt">
                             <h2 class="excerpt-title"> <?php echo the_title(); ?> </h2>
                             <p class="child-page-excerpt-text"> <?php echo wp_strip_all_tags(get_the_excerpt(), true); ?> </p>
-                            <a href="<?php the_permalink(); ?>" class="learn-more-button">Learn More</a>
+                            <a href="<?php the_permalink(); ?>" class="small-link-button">Learn More</a>
                         </div>
                     </div>
 
@@ -46,6 +49,5 @@ get_header();
             <?php endwhile; ?><?php endif; ?>
         </div>
     </div>
-
     <?php
 get_footer();
