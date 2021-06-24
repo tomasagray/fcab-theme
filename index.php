@@ -17,8 +17,8 @@ get_header();
         <?php endwhile; ?>
     </div>
     <div class="pagination-container">
-        <div class="nav-previous alignleft"><?php previous_posts_link('Prev.'); ?></div>
-        <div class="nav-next alignright"><?php next_posts_link('Next'); ?></div>
+        <div class="nav-previous alignleft"><?php previous_posts_link('&laquo; Prev.'); ?></div>
+        <div class="nav-next alignright"><?php next_posts_link('Next &raquo;'); ?></div>
     </div>
     <?php
 get_footer();

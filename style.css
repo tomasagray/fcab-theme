@@ -25,21 +25,13 @@ Use it to make something cool, have fun, and share what you've learned with othe
     --header-color: #006011;
 }
 
+
 /* Wordpress overrides */
 .wp-block-embed {
     margin: 5rem;
     text-align: center;
 }
 
-.nav-previous > a,
-.nav-next > a {
-    font-size: large;
-    font-weight: bold;
-    color: var(--highlight-button-color);
-    border-radius: 1rem;
-    background-color: whitesmoke;
-    padding: .5rem;
-}
 
 /* Shortcodes */
 .impact-metric-row {
@@ -88,6 +80,7 @@ p.impact-metric-description {
     -webkit-box-orient: vertical;
 }
 
+
 /* Base styles */
 body {
     margin: 0;
@@ -108,6 +101,7 @@ h1 {
     color: black;
     font-size: 38pt;
 }
+
 
 /* Content */
 div#content-wrapper {
@@ -240,6 +234,12 @@ a.link-button:hover {
     margin-top: 10rem;
 }
 
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 /* Carousel */
 .fcab-carousel-container {
     display: flex;
@@ -298,8 +298,8 @@ div#main-page-project-carousel {
     background-size: cover;
 }
 
-/* About page */
 
+/* About page */
 div#about-content-container {
     margin: 4rem;
 }
@@ -377,6 +377,7 @@ a.small-link-button:hover {
     justify-content: center;
 }
 
+
 /* Search */
 .search-results-container {
     margin: 2rem auto;
@@ -402,6 +403,7 @@ a.search-result-title {
 a.search-result-link {
     font-style: italic;
 }
+
 
 /* Contact */
 div#contact-form {
