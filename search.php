@@ -21,15 +21,6 @@ function get_result_excerpt($content)
 }
 
 global $wp_query;
-global $query_string;
-$search_query = array();
-if (strlen($query_string) > 0) {
-    $query_args = explode("&", $query_string);
-    foreach ($query_args as $key => $value) {
-        $query_split = explode("=", $value);
-        $search_query[$query_split[0]] = urldecode($query_split[1]);
-    }
-}
 
 get_header();
 ?>
