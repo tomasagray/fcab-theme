@@ -7,12 +7,34 @@ use WP_Query;
 const POST_TYPE = 'fcab_cpt_volunteer';
 const VOLUNTEER_QUOTES = 3;
 
-get_header();
+$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
+get_header();
 ?>
-    <?php $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+    <style>
+        .fusion-one-half {
+            width: 100%;
+        }
+
+        .fusion-separator {
+            display: none;
+        }
+
+        .fusion-column-last {
+            display: none;
+        }
+
+        @media screen and (max-width: 899px) {
+            .hero-header-container {
+                position: relative;
+                top: var(--nav-menu-height);
+                margin-bottom: 5rem;
+            }
+        }
+    </style>
     <div class="hero-image-container">
-        <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+        <div id="about-header-image" class="hero-header-image"
+             style="background-image: url('<?php echo $thumbnail; ?>');"></div>
     </div>
     <div class="content-box hero">
         <div class="hero-header-container">
@@ -22,19 +44,6 @@ get_header();
         </div>
 
         <div id="contact-form">
-            <style>
-                .fusion-one-half {
-                    width: 100%;
-                }
-
-                .fusion-separator {
-                    display: none;
-                }
-
-                .fusion-column-last {
-                    display: none;
-                }
-            </style>
             <?php the_content(); ?>
         </div>
 
@@ -54,11 +63,7 @@ get_header();
                     <?php the_post_thumbnail('medium', array('class' => 'volunteer-portrait')); ?>
                     <div class="volunteer-quote-data">
                         <p class="volunteer-quote-text">
-                            <?php
-                            $quote = get_the_excerpt();
-                            $quote = '"' . $quote . '"';
-                            echo $quote;
-                            ?>
+                            <?php echo '"' . get_the_excerpt() . '"'; ?>
                         </p>
                         <p>- <?php the_title(); ?></p>
                     </div>
