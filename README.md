@@ -1,4 +1,4 @@
-[!FCAB Custom Theme for WordPress](https://github.com/tomasagray/fcab-theme/raw/master/screenshot.png)
+![FCAB Custom Theme for WordPress](https://github.com/tomasagray/fcab-theme/raw/master/screenshot.png)
 # FCAB Custom Theme
 This theme was developed for the Foundation for Charitable
 Activities in Bangladesh, in cooperation with the
