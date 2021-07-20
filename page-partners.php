@@ -15,17 +15,13 @@ get_header();
         }
 
         .major-donor-sub {
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem 0;
-            border: 3px solid whitesmoke;
-            font-size: 16pt;
+            margin: 2rem 0;
+            font-size: 14pt;
+            text-align: center;
         }
 
-        .major-donor-sub > img {
-            margin: 2rem;
+        .major-donor-sub > strong {
+            color: #17458E;
         }
     </style>
     <div class="content-box">
