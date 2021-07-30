@@ -106,7 +106,7 @@ ul.sub-menu > li.menu-item > a {
     padding: 2rem 4rem;
 }
 
-li.menu-item:last-child >div > a,
+li.menu-item:last-child > div > a,
 ul.sub-menu > li.menu-item:last-child > div > a {
     border: 0;
 }
@@ -229,11 +229,22 @@ span.project-tag {
 div#contact-form {
     width: 100%;
     float: revert;
+    order: 1;
+    flex-flow: column;
+}
+
+.wpcf7 {
+    width: 100%;
 }
 
 .volunteer-quotes-container {
+    max-width: 100%;
+}
+
+.volunteer-quote-container {
     float: revert;
     width: 100%;
+    order: 2;
 }
 
 /* Fusion overrides */

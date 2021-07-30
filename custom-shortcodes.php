@@ -2,7 +2,11 @@
 
 namespace fcab\theme;
 
+const POST_TYPE = 'fcab_cpt_volunteer';
+
+
 // Impact metric
+// =======================================================
 function impact_metric($attrs = array(), $content = null)
 {
     // set up default parameters
@@ -29,15 +33,37 @@ function impact_metric_row($attrs = array(), $content = null)
     return '<div class="impact-metric-row">' . do_shortcode($content) . '</div>';
 }
 
-add_shortcode('impact-metric-row', 'fcab\theme\impact_metric_row');
-add_shortcode('impact-metric', 'fcab\theme\impact_metric');
 
 // Volunteer quote
+// ==============================================================
 function volunteer_quote($attrs = array(), $content = null)
 {
-    extract(shortcode_atts(array(
-        'data' => ' '
-    ), $attrs), EXTR_OVERWRITE);
-
-    
+    $volunteer_id = url_to_postid($content);
+    $volunteer = get_post($volunteer_id);
+    ?>
+    <div class="volunteer-quote-container">
+        <?php echo get_the_post_thumbnail($volunteer_id, 'medium', array('class' => 'volunteer-portrait')); ?>
+        <div class="volunteer-quote-data">
+            <p class="volunteer-quote-text">
+                <?php echo '"' . get_the_excerpt($volunteer_id) . '"'; ?>
+            </p>
+            <p>- <?php echo get_the_title($volunteer_id); ?></p>
+        </div>
+    </div>
+    <?php
 }
+
+function volunteer_quotes_column($attrs = array(), $content = null)
+{
+    ?>
+    <div class="volunteer-quotes-container">
+        <?php echo do_shortcode($content); ?>
+    </div>
+    <?php
+}
+
+
+add_shortcode('impact-metric', 'fcab\theme\impact_metric');
+add_shortcode('impact-metric-row', 'fcab\theme\impact_metric_row');
+add_shortcode('volunteer-quote', 'fcab\theme\volunteer_quote');
+add_shortcode('volunteer-quotes-column', 'fcab\theme\volunteer_quotes_column');

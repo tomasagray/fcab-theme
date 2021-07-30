@@ -407,17 +407,22 @@ a.search-result-link {
 
 /* Contact */
 div#contact-form {
+    display: flex;
+    align-items: center;
+}
+
+.wpcf7 {
     width: 50%;
-    float: left;
 }
 
 .volunteer-quotes-container {
     float: right;
-    width: 45%;
+    max-width: 45%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     height: 100%;
+    order: 2;
 }
 
 .volunteer-quote-container {

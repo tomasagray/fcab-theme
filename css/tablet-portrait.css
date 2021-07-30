@@ -160,11 +160,22 @@ a.project-link {
 div#contact-form {
     width: 100%;
     float: revert;
+    flex-flow: column;
+    order: 1;
+}
+
+.wpcf7 {
+    width: 100%;
 }
 
 .volunteer-quotes-container {
+    max-width: 100%;
+}
+
+.volunteer-quote-container {
     float: revert;
     width: 100%;
+    order: 2;
 }
 
 /* Carousel */

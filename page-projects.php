@@ -6,7 +6,7 @@ use WP_Query;
 
 const PROJECTS_DISPLAYED = 6;
 const TAGS = 'fcab_project_tag';
-const POST_TYPE = 'fcab_cpt_project';
+const PROJECTS_CPT = 'fcab_cpt_project';
 const PROJECT_TAGS_MENU = 'tags-menu';
 const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 
@@ -14,7 +14,6 @@ const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 function get_query_url(array $param = null): string
 {
     $url = $_SERVER['REQUEST_URI'];
-//    $url = preg_replace(PAGE_URL_PATTERN, '', $url);
     if ($param !== null) {
         if (strpos($url, '?')) {
             if (strpos($url, 'project-tag=')) {
@@ -30,7 +29,7 @@ function get_query_url(array $param = null): string
     return $url;
 }
 
-function get_page_num()
+function get_page_num(): int
 {
     $url = get_query_url();
     $matches = [];
@@ -51,7 +50,7 @@ function get_query_args($current_tag): array
     // for pagination
     $page_num = get_page_num();
     $q_args = [
-        'post_type' => POST_TYPE,
+        'post_type' => PROJECTS_CPT,
         'post_status' => 'publish',
         'posts_per_page' => PROJECTS_DISPLAYED,
         'paged' => $page_num,
@@ -69,7 +68,6 @@ function get_query_args($current_tag): array
 }
 
 /**
- * @param array $tags
  * @return mixed
  */
 function get_current_tag()
