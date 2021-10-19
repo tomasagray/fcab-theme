@@ -7,7 +7,7 @@ const POST_TYPE = 'fcab_cpt_volunteer';
 
 // Impact metric
 // =======================================================
-function impact_metric($attrs = array(), $content = null)
+function impact_metric($attrs = array(), $content = null): string
 {
     // set up default parameters
     extract(shortcode_atts(array(
@@ -28,7 +28,7 @@ function impact_metric($attrs = array(), $content = null)
         . '</div>';
 }
 
-function impact_metric_row($attrs = array(), $content = null)
+function impact_metric_row($attrs = array(), $content = null): string
 {
     return '<div class="impact-metric-row">' . do_shortcode($content) . '</div>';
 }

@@ -4,7 +4,7 @@ namespace fcab\theme;
 
 const SEARCH_EXCERPT_LEN = 35;
 
-function get_result_excerpt($content)
+function get_result_excerpt($content): string
 {
     $do_shortcode = do_shortcode($content);
     $text = apply_filters('the_content', $do_shortcode);

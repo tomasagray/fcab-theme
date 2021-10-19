@@ -9,8 +9,7 @@ function get_current_url(): string
 {
     $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] === 443)
         ? "https://" : "http://";
-    $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    return $url;
+    return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 
 $url = get_current_url();

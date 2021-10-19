@@ -9,7 +9,8 @@ class Menu
 
     /**
      * Menu constructor.
-     * @param array $items
+     * @param array|null $items
+     * @param string $title
      */
     public function __construct(array $items = null, string $title = '')
     {
@@ -37,14 +38,14 @@ class Menu
         $this->items = $items;
     }
 
-    public function addItem(MenuItem $item)
+    public function addItem(MenuItem $item): void
     {
         $this->items[] = $item;
     }
 
     /**
      * @param int $submenu_id
-     * @param Menu $submenu
+     * @param MenuItem $menu_item
      * @return bool
      */
     public function addSubMenuItem(int $submenu_id, MenuItem $menu_item): bool

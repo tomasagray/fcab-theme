@@ -11,9 +11,6 @@ const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
 const PROJECT_TAGS_MENU = 'tags-menu';
 
-use fcab\theme\Menu;
-use fcab\theme\MenuItem;
-
 
 function get_menu($location)
 {
@@ -58,7 +55,7 @@ function get_social_menu_html(array $social_menu): string
             $html .= '<img alt="' . $menu->title . '" src="' . $icon . '"/>';
         } else {
             $html .= '<span class="social-button-letter">'
-                . strtoupper(substr($host, 0, 1))
+                . strtoupper($host[0])
                 . '</span>';
         }
         $html .= '</a></li>';

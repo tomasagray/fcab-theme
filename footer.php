@@ -2,10 +2,6 @@
 
 namespace fcab\theme;
 
-use const fcab\theme\MAIN_MENU;
-use const fcab\theme\BOTTOM_MENU;
-use const fcab\theme\SOCIAL_MENU;
-
 define("TEMPLATE_DIR", get_template_directory());
 define("ICON_DIR", '/img/social/');
 define("THEME_URI", get_template_directory_uri());

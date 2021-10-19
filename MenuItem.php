@@ -2,7 +2,6 @@
 
 namespace fcab\theme;
 
-use fcab\theme\Menu;
 
 class MenuItem
 {
@@ -16,7 +15,7 @@ class MenuItem
      * @param int $id
      * @param string $url
      * @param string $title
-     * @param Menu $submenu
+     * @param Menu|null $submenu
      */
     public function __construct(int $id, string $url, string $title, Menu $submenu = null)
     {
@@ -90,7 +89,7 @@ class MenuItem
         $this->submenu = $submenu;
     }
 
-    public function addSubmenuItem(MenuItem $item)
+    public function addSubmenuItem(MenuItem $item): void
     {
         if ($this->submenu === null) {
             $this->setSubmenu(new Menu(null, ''));

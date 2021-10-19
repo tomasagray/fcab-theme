@@ -6,8 +6,6 @@
 namespace fcab\theme;
 
 
-use const fcab\theme\MAIN_MENU;
-
 $theme_uri = get_template_directory_uri();
 //$current_url =
 //    (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
