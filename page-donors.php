@@ -68,7 +68,7 @@ function print_top_level_donors($intervals, array &$donor_groups, &$donors): voi
 {
     $top_floor = $intervals;
     if (count($donor_groups[$top_floor]) > 0) {
-        echo '<h3 class="donors-heading">$' . $top_floor . ' - above</h3>';
+//        echo '<h3 class="donors-heading">$' . $top_floor . ' - above</h3>';
         $donors = array_pop($donor_groups);
         print_donors($donors);
     }
@@ -82,7 +82,7 @@ function print_bottom_level_donors($intervals, array $donor_groups): void
 {
     $bottom_group = $intervals;
     if (count($donor_groups[$bottom_group]) > 0) {
-        echo '<h3 class="donors-heading">Up to $' . $bottom_group . '</h3>';
+//        echo '<h3 class="donors-heading">Up to $' . $bottom_group . '</h3>';
         print_donors($donor_groups[$bottom_group]);
     }
 }
@@ -136,7 +136,7 @@ function print_donor_table(array $donors): void
                 $top = $intervals[$i];
                 $bottom = $intervals[$i - 1];
                 if (count($donor_groups[$top]) > 0) {
-                    echo '<h3 class="donors-heading">$' . $bottom . ' - $' . $top . '</h3>';
+//                    echo '<h3 class="donors-heading">$' . $bottom . ' - $' . $top . '</h3>';
                     $donors = array_pop($donor_groups);
                     print_donors($donors);
                 }
