@@ -127,18 +127,18 @@ function print_donor_table(array $donors): void
     for ($i = $num_intervals; $i >= 0; $i--) {
         switch ($intervals[$i]) {
             case PHP_INT_MAX:
-                print_top_level_donors($intervals[$num_intervals -1], $donor_groups, $donors);
+                print_top_level_donors($intervals[$num_intervals - 1], $donor_groups, $donors);
                 break;
             case $intervals[0]:
                 print_bottom_level_donors($intervals[0], $donor_groups);
                 break;
             default:
                 $top = $intervals[$i];
-                $bottom = $intervals[$i - 1];
+//                $bottom = $intervals[$i - 1];
                 if (count($donor_groups[$top]) > 0) {
 //                    echo '<h3 class="donors-heading">$' . $bottom . ' - $' . $top . '</h3>';
-                    $donors = array_pop($donor_groups);
-                    print_donors($donors);
+                    $top_donors = array_pop($donor_groups);
+                    print_donors($top_donors);
                 }
                 break;
         }

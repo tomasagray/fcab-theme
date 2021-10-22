@@ -18,7 +18,7 @@ $loop = new WP_Query([
     'post_status' => 'publish',
     'posts_per_page' => CAROUSEL_PROJECT_COUNT
 ]);
-$projects = $loop->get_posts();
+$loop->get_posts();
 ?>
     <div class="hero-image-container">
         <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>

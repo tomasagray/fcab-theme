@@ -119,7 +119,7 @@ function get_prev_link($loop): ?string
         if (preg_match(PAGE_URL_PATTERN, $url)) {
             return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
         }
-        return $url.$page_url.$query;
+        return $url . $page_url . $query;
     }
     return null;
 }
@@ -132,9 +132,9 @@ function get_next_link($loop): ?string
         $query = get_query_string();
         $page_url = '/page/' . ($page + 1);
         if (preg_match(PAGE_URL_PATTERN, $url)) {
-            return preg_replace(PAGE_URL_PATTERN, $page_url, $url).$query;
+            return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
         }
-        return $url.$page_url.$query;
+        return $url . $page_url . $query;
     }
     return null;
 }
@@ -144,7 +144,7 @@ function get_page_link_html($url, $text): string
     if ($url === null || $text === null) {
         return "";
     }
-    return '<a href="'.$url.'" class="small-link-button">'.$text.'</a>';
+    return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
 }
 
 /**
@@ -154,7 +154,7 @@ function get_query_string(): ?string
 {
     $query = $_SERVER['REDIRECT_QUERY_STRING'];
     if ($query !== null) {
-        $query = '?'.$query;
+        $query = '?' . $query;
     }
     return $query;
 }
@@ -168,7 +168,7 @@ get_header();
 ?>
 
     <div class="content-box">
-        <h1 class="project-heading">Our Programs</h1>
+        <h1 class="project-heading">Projects</h1>
         <?php
         print_tags_menu($tags_menu, $current_tag);
         if ($current_tag !== null) {
@@ -179,7 +179,6 @@ get_header();
         }
         ?>
 
-        <h2>Current Projects</h2>
         <?php
         if ($loop->have_posts()): ?>
             <div class="project-card-container">

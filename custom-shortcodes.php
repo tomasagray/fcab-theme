@@ -2,17 +2,16 @@
 
 namespace fcab\theme;
 
-const POST_TYPE = 'fcab_cpt_volunteer';
-
 
 // Impact metric
 // =======================================================
 function impact_metric($attrs = array(), $content = null): string
 {
     // set up default parameters
-    extract(shortcode_atts(array(
+    $shortcode_attrs = shortcode_atts(array(
         'data' => ' '
-    ), $attrs), EXTR_OVERWRITE);
+    ), $attrs);
+    extract($shortcode_attrs, EXTR_OVERWRITE);
 
     $header_size = 3;
     if (strlen($data) > 4) {
@@ -39,7 +38,7 @@ function impact_metric_row($attrs = array(), $content = null): string
 function volunteer_quote($attrs = array(), $content = null)
 {
     $volunteer_id = url_to_postid($content);
-    $volunteer = get_post($volunteer_id);
+    get_post($volunteer_id);
     ?>
     <div class="volunteer-quote-container">
         <?php echo get_the_post_thumbnail($volunteer_id, 'medium', array('class' => 'volunteer-portrait')); ?>
