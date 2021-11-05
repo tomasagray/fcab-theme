@@ -76,7 +76,7 @@ p.impact-metric-description {
     display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
@@ -445,4 +445,13 @@ img.volunteer-portrait {
 
 .volunteer-quote-container:nth-child(even) > div {
     order: 1;
+}
+
+.wpcf7-form .wpcf7-not-valid-tip {
+    display: table-cell;
+    background-color: red;
+    color: whitesmoke;
+    font-weight: bolder;
+    padding: 1rem;
+    margin: 1rem;
 }

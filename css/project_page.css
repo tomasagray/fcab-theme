@@ -7,7 +7,7 @@ Project custom post type styles
     --project-card-border-radius: .6rem;
 }
 
-.project-heading {
+.centered-heading {
     text-align: center;
 }
 
@@ -98,7 +98,7 @@ a.project-link:hover {
     margin: 2rem;
 }
 
-.project-heading h1 {
+.centered-heading h1 {
     text-align: left;
 
 }

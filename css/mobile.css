@@ -6,6 +6,7 @@ h1 {
 /* Shortcodes */
 .impact-metric-row {
     flex-flow: column;
+    margin: 0;
 }
 
 .impact-metric-container {
