@@ -40,7 +40,7 @@ get_header();
                     <div class="child-page-excerpt-container">
                         <div class="child-page-excerpt">
                             <h2 class="excerpt-title"> <?php echo the_title(); ?> </h2>
-                            <p class="child-page-excerpt-text"> <?php echo wp_strip_all_tags(get_the_excerpt(), true); ?> </p>
+                            <p class="child-page-excerpt-text"> <?php echo get_the_excerpt(); ?> </p>
                             <a href="<?php the_permalink(); ?>" class="small-link-button">Learn More</a>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ get_header();
 ?>
     <div class="content-box">
         <div class="project-container">
-            <div class="project-heading">
+            <div class="centered-heading">
                 <h1><?php echo $post->post_title; ?></h1>
                 <?php if (count($tags) > 0): ?>
                     <div class="project-tag-container">

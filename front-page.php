@@ -4,7 +4,7 @@ namespace fcab\theme;
 
 use WP_Query;
 
-const FCAB_PROJECT = 'fcab_cpt_project';
+const POST_TYPE = 'fcab_cpt_program';
 const CAROUSEL_PROJECT_COUNT = 6;
 
 
@@ -14,7 +14,7 @@ $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
 // Get projects
 $loop = new WP_Query([
-    'post_type' => FCAB_PROJECT,
+    'post_type' => POST_TYPE,
     'post_status' => 'publish',
     'posts_per_page' => CAROUSEL_PROJECT_COUNT
 ]);
@@ -32,7 +32,7 @@ $loop->get_posts();
         <?php the_content(); ?>
         <div id="project-carousel-container" class="fcab-carousel-container"></div>
 
-        <h1 style="text-align: center;">Current Projects</h1>
+        <h1 style="text-align: center;">Activities</h1>
 
         <div class="fcab-carousel-container">
             <div class="fcab-carousel-prev-button">

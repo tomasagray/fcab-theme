@@ -4,11 +4,12 @@ namespace fcab\theme;
 
 use WP_Query;
 
+require_once 'functions.php';
+
 const PROJECTS_DISPLAYED = 6;
 const TAGS = 'fcab_project_tag';
 const PROJECTS_CPT = 'fcab_cpt_project';
 const PROJECT_TAGS_MENU = 'tags-menu';
-const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 
 
 function get_query_url(array $param = null): string
@@ -94,69 +95,22 @@ function print_tags_menu($menu_items, $current_term = null): void
     echo '<div class="project-tags-container">';
     echo '<form name="filter-tags" id="filter-tags" method="POST" action="' . $_SERVER['REQUEST_URI'] . '">';
     echo '<input type="hidden" name="project-tag" id="project-tag" />';
-    foreach ($menu_items as $menu_item) {
-        $filter_url = get_query_url(['tag' => $menu_item->title]);
-        // remove page numbers
-        $filter_url = preg_replace(PAGE_URL_PATTERN, '', $filter_url);
-        echo '<a class="project-sort-tag';
-        if ($current_term !== null && $menu_item->title === $current_term->name) {
-            echo ' current';
+
+    if ($menu_items) {
+        foreach ($menu_items as $menu_item) {
+            $filter_url = get_query_url(['tag' => $menu_item->title]);
+            // remove page numbers
+            $filter_url = preg_replace(PAGE_URL_PATTERN, '', $filter_url);
+            echo '<a class="project-sort-tag';
+            if ($current_term !== null && $menu_item->title === $current_term->name) {
+                echo ' current';
+            }
+            echo '" href="' . $filter_url . '">';
+            echo $menu_item->title . '</a>';
         }
-        echo '" href="' . $filter_url . '">';
-        echo $menu_item->title . '</a>';
     }
     echo '</form>';
     echo '</div>';
-}
-
-function get_prev_link($loop): ?string
-{
-    $page = $loop->query_vars['paged'];
-    if ($page > 1) {
-        $url = $_SERVER['REDIRECT_URL'];
-        $page_url = '/page/' . ($page - 1);
-        $query = get_query_string();
-        if (preg_match(PAGE_URL_PATTERN, $url)) {
-            return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
-        }
-        return $url . $page_url . $query;
-    }
-    return null;
-}
-
-function get_next_link($loop): ?string
-{
-    $page = $loop->query_vars['paged'];
-    if ($page < $loop->max_num_pages) {
-        $url = $_SERVER["REDIRECT_URL"];
-        $query = get_query_string();
-        $page_url = '/page/' . ($page + 1);
-        if (preg_match(PAGE_URL_PATTERN, $url)) {
-            return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
-        }
-        return $url . $page_url . $query;
-    }
-    return null;
-}
-
-function get_page_link_html($url, $text): string
-{
-    if ($url === null || $text === null) {
-        return "";
-    }
-    return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
-}
-
-/**
- * @return string
- */
-function get_query_string(): ?string
-{
-    $query = $_SERVER['REDIRECT_QUERY_STRING'];
-    if ($query !== null) {
-        $query = '?' . $query;
-    }
-    return $query;
 }
 
 $tags_menu = get_menu(PROJECT_TAGS_MENU);
@@ -168,7 +122,7 @@ get_header();
 ?>
 
     <div class="content-box">
-        <h1 class="project-heading">Projects</h1>
+        <h1 class="centered-heading">Projects</h1>
         <?php
         print_tags_menu($tags_menu, $current_tag);
         if ($current_tag !== null) {
@@ -182,27 +136,8 @@ get_header();
         <?php
         if ($loop->have_posts()): ?>
             <div class="project-card-container">
-                <?php while ($loop->have_posts()): $loop->the_post();
-                    $project_id = get_the_ID();
-                    if (get_post_status($project_id) === 'publish'):
-                        $thumb = get_the_post_thumbnail_url(get_the_ID());
-                        echo '<div class="project-card">';
-                        if ($thumb !== false) {
-                            echo '<div class="project-card-image" style="background-image: url(\'' . $thumb . '\');">';
-                            echo '</div>';
-                        }
-                        ?>
-                        <div class="project-card-description">
-                            <h3 class="project-title"><?php the_title(); ?></h3>
-                            <p class="project-description">
-                                <?php echo wp_strip_all_tags(wp_trim_excerpt('', $project_id), true); ?>
-                            </p>
-                            <a href="<?php the_permalink(); ?>" class="project-link">Learn more</a>
-                        </div>
-                        <?php
-                        echo '</div>';
-                    endif;
-                endwhile;
+                <?php
+                print_project_cards($loop);
                 wp_reset_postdata();
                 ?>
             </div>

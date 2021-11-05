@@ -2,6 +2,8 @@
 
 namespace fcab\theme;
 
+use WP_Query;
+
 require_once 'custom-shortcodes.php';
 require_once 'Menu.php';
 require_once 'MenuItem.php';
@@ -10,6 +12,7 @@ const MAIN_MENU = 'main-menu';
 const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
 const PROJECT_TAGS_MENU = 'tags-menu';
+const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 
 
 function get_menu($location)
@@ -101,7 +104,84 @@ function register_social_menu()
 function register_project_tags_menu()
 {
     register_nav_menu(PROJECT_TAGS_MENU, __('Project Tags Menu'));
+}
 
+/**
+ * @param WP_Query $loop
+ */
+function print_project_cards(WP_Query $loop): void
+{
+    while ($loop->have_posts()): $loop->the_post();
+        $project_id = get_the_ID();
+        if (get_post_status($project_id) === 'publish'):
+            $thumb = get_the_post_thumbnail_url(get_the_ID());
+            echo '<div class="project-card">';
+            if ($thumb !== false) {
+                echo '<div class="project-card-image" style="background-image: url(\'' . $thumb . '\');">';
+                echo '</div>';
+            }
+            ?>
+            <div class="project-card-description">
+                <h3 class="project-title"><?php the_title(); ?></h3>
+                <p class="project-description">
+                    <?php echo wp_strip_all_tags(wp_trim_excerpt('', $project_id), true); ?>
+                </p>
+                <a href="<?php the_permalink(); ?>" class="project-link">Learn more</a>
+            </div>
+            <?php
+            echo '</div>';
+        endif;
+    endwhile;
+}
+
+/**
+ * @return string
+ */
+function get_query_string(): ?string
+{
+    $query = $_SERVER['REDIRECT_QUERY_STRING'];
+    if ($query !== null) {
+        $query = '?' . $query;
+    }
+    return $query;
+}
+
+function get_prev_link($loop): ?string
+{
+    $page = $loop->query_vars['paged'];
+    if ($page > 1) {
+        $url = $_SERVER['REDIRECT_URL'];
+        $page_url = '/page/' . ($page - 1);
+        $query = get_query_string();
+        if (preg_match(PAGE_URL_PATTERN, $url)) {
+            return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
+        }
+        return $url . $page_url . $query;
+    }
+    return null;
+}
+
+function get_next_link($loop): ?string
+{
+    $page = $loop->query_vars['paged'];
+    if ($page < $loop->max_num_pages) {
+        $url = $_SERVER["REDIRECT_URL"];
+        $query = get_query_string();
+        $page_url = '/page/' . ($page + 1);
+        if (preg_match(PAGE_URL_PATTERN, $url)) {
+            return preg_replace(PAGE_URL_PATTERN, $page_url, $url) . $query;
+        }
+        return $url . $page_url . $query;
+    }
+    return null;
+}
+
+function get_page_link_html($url, $text): string
+{
+    if ($url === null || $text === null) {
+        return "";
+    }
+    return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
 }
 
 add_action('init', 'fcab\theme\register_main_menu');
@@ -109,5 +189,5 @@ add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');
 add_action('init', 'fcab\theme\register_project_tags_menu');
 // enable features
-add_theme_support( 'post-thumbnails' );
-add_post_type_support( 'page', 'excerpt' );
+add_theme_support('post-thumbnails');
+add_post_type_support('page', 'excerpt');
