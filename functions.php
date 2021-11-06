@@ -184,6 +184,38 @@ function get_page_link_html($url, $text): string
     return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
 }
 
+
+function get_query_url(array $param = null): string
+{
+    $url = $_SERVER['REQUEST_URI'];
+    if ($param !== null) {
+        if (strpos($url, '?')) {
+            if (strpos($url, 'project-tag=')) {
+                $new_param = 'project-tag=' . $param['tag'];
+                $url = preg_replace('/project-tag=[\w+=%-]+/', $new_param, $url);
+            } else {
+                $url .= '&project-tag=' . $param['tag'];
+            }
+        } else {
+            $url .= '?project-tag=' . $param['tag'];
+        }
+    }
+    return $url;
+}
+
+function get_page_num(): int
+{
+    $url = get_query_url();
+    $matches = [];
+    // examine URL for page number
+    preg_match(PAGE_URL_PATTERN, $url, $matches);
+    if (count($matches) >= 3 && $matches[2] !== null) {
+        return (int)$matches[2];
+    }
+    return 1; // default
+}
+
+
 add_action('init', 'fcab\theme\register_main_menu');
 add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');

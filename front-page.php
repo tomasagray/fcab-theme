@@ -21,7 +21,8 @@ $loop = new WP_Query([
 $loop->get_posts();
 ?>
     <div class="hero-image-container">
-        <div id="about-header-image" class="hero-header-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+        <div id="about-header-image" class="hero-header-image"
+             style="background-image: url('<?php echo $thumbnail; ?>');"></div>
     </div>
     <div id="homepage-content-box" class="content-box hero">
         <div id="hero-header-container" class="hero-header-container">
@@ -43,23 +44,27 @@ $loop->get_posts();
                 <div class="fcab-carousel-item-wrapper">
                     <?php
                     // display latest projects
-                    while ($loop->have_posts()): $loop->the_post(); ?>
-                        <div class="fcab-carousel-item">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php
-                                // get Project featured image, or placeholder
-                                $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                                if (!$thumbnail) {
-                                    $thumbnail = get_template_directory_uri() . '/img/placeholder.png';
-                                }
-                                ?>
-                                <div class="fcab-carousel-image" style="background-image: url('<?php echo $thumbnail; ?>');">
-                                    &nbsp;
-                                </div>
-                                <h3><?php the_title(); ?></h3>
-                            </a>
-                        </div>
-                    <?php endwhile; ?>
+                    if ($loop->have_posts()):
+                        while ($loop->have_posts()): $loop->the_post(); ?>
+                            <div class="fcab-carousel-item">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php
+                                    // get Project featured image, or placeholder
+                                    $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                                    if (!$thumbnail) {
+                                        $thumbnail = get_template_directory_uri() . '/img/placeholder.png';
+                                    }
+                                    ?>
+                                    <div class="fcab-carousel-image"
+                                         style="background-image: url('<?php echo $thumbnail; ?>');">
+                                        &nbsp;
+                                    </div>
+                                    <h3><?php the_title(); ?></h3>
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: echo "No Activities at this time. Please back soon."; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="fcab-carousel-next-button">
