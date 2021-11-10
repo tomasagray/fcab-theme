@@ -9,7 +9,6 @@ require_once 'functions.php';
 const PROJECTS_DISPLAYED = 6;
 const TAGS = 'fcab_project_tag';
 const PROJECTS_CPT = 'fcab_cpt_project';
-const PROJECT_TAGS_MENU = 'tags-menu';
 
 
 /**

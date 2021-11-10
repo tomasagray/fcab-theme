@@ -139,11 +139,14 @@ function print_project_cards(WP_Query $loop): void
  */
 function get_query_string(): ?string
 {
-    $query = $_SERVER['REDIRECT_QUERY_STRING'];
-    if ($query !== null) {
-        $query = '?' . $query;
+    if (in_array('REDIRECT_QUERY_STRING', $_SERVER, true)) {
+        $query = $_SERVER['REDIRECT_QUERY_STRING'];
+        if ($query !== null) {
+            $query = '?' . $query;
+        }
+        return $query;
     }
-    return $query;
+    return null;
 }
 
 function get_prev_link($loop): ?string
