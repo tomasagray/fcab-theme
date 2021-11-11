@@ -7,9 +7,6 @@ namespace fcab\theme;
 
 
 $theme_uri = get_template_directory_uri();
-//$current_url =
-//    (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
-//    . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -33,43 +30,6 @@ $theme_uri = get_template_directory_uri();
     <link href="<?php echo $theme_uri; ?>/css/laptop.css" rel="stylesheet" media="screen and (min-width: 1200px) and (max-width: 1799px)">
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
-    <script>
-        $(function () {
-            // Initialize JQueryUI menu
-            $('#nav-main-menu').menu({
-                classes: {
-                    'ui-menu': 'nav-main-menu',
-                    'ui-menu-item': 'menu-item',
-                },
-                position: { my: 'center bottom', at: 'center top'}
-            });
-
-            // Attach mobile menu button handlers
-            $('img.mobile-submenu-arrow').on('click', function() {
-                let submenu = $(this).parent().siblings().select('ul').first();
-                if (submenu.hasClass('open')) {
-                    submenu.removeClass('open');
-                    $(this).css('transform', 'rotate(0deg)')
-                    submenu.animate({height: 0});
-                } else {
-                    submenu.addClass('open');
-                    $(this).css('transform', 'rotate(90deg)')
-                    submenu.animate({
-                        height: submenu.prop('scrollHeight')
-                    }, 500, function () {
-                        submenu.css('position', 'initial');
-                    });
-                }
-            });
-            $('#mobile-menu-button').on('click', function () {
-                handleMenuClick();
-            });
-            $('#mobile-menu-close-button').on('click', function () {
-                handleMenuClick();
-            });
-
-        });
-    </script>
 </head>
 
 <body>

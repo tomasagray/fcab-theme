@@ -31,17 +31,16 @@ $loop->get_posts();
             </div>
         </div>
         <?php the_content(); ?>
-        <div id="project-carousel-container" class="fcab-carousel-container"></div>
+        <div id="project-carousel-container" class="carousel-container"></div>
 
         <h1 style="text-align: center;">Activities</h1>
-
-        <div class="fcab-carousel-container">
-            <div class="fcab-carousel-prev-button">
+        <div class="carousel-container" id="fcab-carousel-container">
+            <div class="carousel-prev-button">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/carousel-prev.png" alt="Previous"
                      id="current-project-carousel-prev" class="fcab-carousel-prev"/>
             </div>
             <div class="fcab-carousel" id="main-page-project-carousel">
-                <div class="fcab-carousel-item-wrapper">
+                <div class="carousel-item-wrapper">
                     <?php
                     // display latest projects
                     if ($loop->have_posts()):
@@ -67,18 +66,16 @@ $loop->get_posts();
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="fcab-carousel-next-button">
+            <div class="carousel-next-button">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/carousel-next.png" alt="Next"
                      id="current-project-carousel-next" class="fcab-carousel-next"/>
             </div>
         </div>
         <script>
             $(function () {
-                let elem = $('#main-page-project-carousel');
+                let elem = $('#fcab-carousel-container');
                 let carousel = new Carousel(elem);
-                // todo - move to Carousel class
-                $('.fcab-carousel-prev-button').on('click', carousel.moveCarousel());
-                $('.fcab-carousel-next-button').on('click', carousel.moveCarousel('right'));
+                console.log('Created Carousel:', carousel);
             });
         </script>
     </div>

@@ -3,7 +3,7 @@ Theme Name: FCAB Custom Theme
 Theme URI: http://wordpress.org/themes/fcab
 Author: Tomás Gray
 Description: Custom theme developed for the Foundation for Charitable Activities in Bangladesh (https://www.fcabd.org/)
-Version: 0.2
+Version: 0.2.1
 Requires at least: 5.0
 Tested up to: 5.8.1
 Requires PHP: 7.4
@@ -245,19 +245,28 @@ a.link-button:hover {
 
 
 /* Carousel */
-.fcab-carousel-container {
+.carousel-container {
     display: flex;
     align-items: center;
 }
 
-.fcab-carousel-prev-button,
-.fcab-carousel-next-button {
-    padding: 0 2rem;
+.carousel-prev-button,
+.carousel-next-button {
+    padding: 1rem 2rem;
+    opacity: .9;
 }
 
-.fcab-carousel-prev-button:hover,
-.fcab-carousel-next-button:hover {
+.carousel-prev-button:hover,
+.carousel-next-button:hover {
     cursor: pointer;
+    opacity: 1;
+    background-color: whitesmoke;
+}
+
+.carousel-prev-button.disabled,
+.carousel-next-button.disabled {
+    opacity: 0;
+    cursor: default;
 }
 
 div#main-page-project-carousel {
@@ -267,7 +276,7 @@ div#main-page-project-carousel {
     flex: 1 1 auto;
 }
 
-.fcab-carousel-item-wrapper {
+.carousel-item-wrapper {
     display: flex;
     width: 100%;
     position: relative;

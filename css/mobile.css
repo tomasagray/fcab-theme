@@ -276,7 +276,7 @@ div#contact-form {
 
 
 /* Carousel */
-.fcab-carousel-container {
+.carousel-container {
     background-color: whitesmoke;
     border-radius: 1rem;
 }
@@ -285,12 +285,12 @@ div#contact-form {
     overflow-x: scroll !important;
 }
 
-.fcab-carousel-prev-button,
-.fcab-carousel-next-button {
+.carousel-prev-button,
+.carousel-next-button {
     display: none;
 }
 
-.fcab-carousel-item-wrapper {
+.carousel-item-wrapper {
     width: revert;
 }
 
