@@ -21,7 +21,8 @@ $theme_uri = get_template_directory_uri();
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="<?php echo $theme_uri; ?>/js/vendor/slick/slick.min.js"></script>
-    <script src="<?php echo $theme_uri; ?>/js/fcab.js"></script>
+    <script src="<?php echo $theme_uri; ?>/js/mobile-menu.js"></script>
+    <script src="<?php echo $theme_uri; ?>/js/carousel.js"></script>
     <?php wp_head(); ?>
     <link href="<?php echo $theme_uri; ?>/css/fusion-styles.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/css/fusion-overrides.css" rel="stylesheet">

@@ -54,6 +54,10 @@ define("THEME_URI", get_template_directory_uri());
         </div>
     </div>
 </footer>
-
+<script>
+    $(function () {
+        initializeMobileMenu();
+    });
+</script>
 </body>
 </html>
