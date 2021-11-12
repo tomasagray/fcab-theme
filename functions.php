@@ -3,6 +3,7 @@
 namespace fcab\theme;
 
 use WP_Query;
+use WP_Term;
 
 require_once 'custom-shortcodes.php';
 require_once 'Menu.php';
@@ -13,6 +14,11 @@ const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
 const PROJECT_TAGS_MENU = 'tags-menu';
 const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
+const PROGRAMS_CPT = 'fcab_cpt_program';
+const TAGS = 'fcab_program_tag';
+const PROJECTS_CPT = 'fcab_cpt_project';
+const ACTIVITIES_CPT = 'fcab_cpt_activity';
+const CARDS_DISPLAYED = 6;
 
 
 function get_menu($location)
@@ -107,6 +113,32 @@ function register_project_tags_menu()
 }
 
 /**
+ * @param $post_type string Custom Post Type identifier
+ * @param $current_tag ?WP_Term Program Tag
+ * @return array
+ */
+function get_cpt_query(string $post_type, WP_Term $current_tag = null): array
+{
+    $page_num = get_page_num();
+    $q_args = [
+        'post_type' => $post_type,
+        'post_status' => 'publish',
+        'posts_per_page' => CARDS_DISPLAYED,
+        'paged' => $page_num,
+        'order' => 'DESC',
+        'orderby' => 'date'
+    ];
+    if ($current_tag !== null) {
+        $q_args['tax_query'] = array([
+            'taxonomy' => TAGS,
+            'terms' => $current_tag->name,
+            'field' => 'name'
+        ]);
+    }
+    return $q_args;
+}
+
+/**
  * @param WP_Query $loop
  */
 function print_project_cards(WP_Query $loop): void
@@ -187,7 +219,6 @@ function get_page_link_html($url, $text): string
     return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
 }
 
-
 function get_query_url(array $param = null): string
 {
     $url = $_SERVER['REQUEST_URI'];
@@ -218,7 +249,7 @@ function get_page_num(): int
     return 1; // default
 }
 
-
+// Hooks
 add_action('init', 'fcab\theme\register_main_menu');
 add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');

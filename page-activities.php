@@ -7,26 +7,9 @@ use WP_Query;
 
 require_once 'functions.php';
 
-const ACTIVITIES_CPT = 'fcab_cpt_activity';
-const ACTIVITIES_DISPLAYED = 6;
-
-function get_query_args(): array
-{
-// for pagination
-    $page_num = get_page_num();
-    return [
-        'post_type' => ACTIVITIES_CPT,
-        'post_status' => 'publish',
-        'posts_per_page' => ACTIVITIES_DISPLAYED,
-        'paged' => $page_num,
-        'order' => 'DESC',
-        'orderby' => 'date'
-    ];
-}
-
 get_header();
 
-$args = get_query_args();
+$args = get_cpt_query(ACTIVITIES_CPT);
 $loop = new WP_Query($args);
 ?>
 
@@ -55,6 +38,6 @@ $loop = new WP_Query($args);
         ?>
     </div>
 
-<?php
+    <?php
 
 get_footer();

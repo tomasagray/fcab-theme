@@ -6,30 +6,10 @@ use WP_Query;
 
 require_once 'functions.php';
 
-const PROGRAMS_CPT = 'fcab_cpt_program';
-const PROGRAMS_DISPLAYED = 6;
-
-
-/**
- * @return array
- */
-function get_query_args(): array
-{
-// for pagination
-    $page_num = get_page_num();
-    return [
-        'post_type' => PROGRAMS_CPT,
-        'post_status' => 'publish',
-        'posts_per_page' => PROGRAMS_DISPLAYED,
-        'paged' => $page_num,
-        'order' => 'DESC',
-        'orderby' => 'date'
-    ];
-}
 
 get_header();
 
-$args = get_query_args();
+$args = get_cpt_query(PROGRAMS_CPT);
 $loop = new WP_Query($args);
 ?>
 
