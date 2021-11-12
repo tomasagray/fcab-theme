@@ -15,7 +15,7 @@ const SOCIAL_MENU = 'social-menu';
 const PROJECT_TAGS_MENU = 'tags-menu';
 const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 const PROGRAMS_CPT = 'fcab_cpt_program';
-const TAGS = 'fcab_program_tag';
+const PROGRAM_TAG = 'fcab_program_tag';
 const PROJECTS_CPT = 'fcab_cpt_project';
 const ACTIVITIES_CPT = 'fcab_cpt_activity';
 const CARDS_DISPLAYED = 6;
@@ -130,7 +130,7 @@ function get_cpt_query(string $post_type, WP_Term $current_tag = null): array
     ];
     if ($current_tag !== null) {
         $q_args['tax_query'] = array([
-            'taxonomy' => TAGS,
+            'taxonomy' => PROGRAM_TAG,
             'terms' => $current_tag->name,
             'field' => 'name'
         ]);
@@ -156,7 +156,12 @@ function print_project_cards(WP_Query $loop): void
             <div class="project-card-description">
                 <h3 class="project-title"><?php the_title(); ?></h3>
                 <p class="project-description">
-                    <?php echo wp_strip_all_tags(wp_trim_excerpt('', $project_id), true); ?>
+                    <?php
+                    $excerpt = wp_strip_all_tags(wp_trim_excerpt('', $project_id), true);
+                    // remove empty spaces
+                    $excerpt = str_replace(array("\xc2\xa0", "&nbsp;"), '', $excerpt);
+                    echo trim($excerpt);
+                    ?>
                 </p>
                 <a href="<?php the_permalink(); ?>" class="project-link">Learn more</a>
             </div>
