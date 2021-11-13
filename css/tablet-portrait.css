@@ -184,7 +184,7 @@ div#contact-form {
     border-radius: 1rem;
 }
 
-.fcab-carousel {
+.carousel {
     overflow-x: scroll !important;
 }
 
@@ -197,7 +197,7 @@ div#contact-form {
     width: revert;
 }
 
-.fcab-carousel-item {
+.carousel-item {
     opacity: 1;
     min-width: revert;
     margin: 1rem;

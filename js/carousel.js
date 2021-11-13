@@ -8,58 +8,102 @@ class Carousel {
     advance;
     prevButton;
     nextButton;
+    isMoving;
+
+    #setupButtons() {
+        this.prevButton = this.carousel.children('.carousel-prev-button');
+        this.nextButton = this.carousel.children('.carousel-next-button');
+        this.prevButton.on('click', this.handleCarouselMove());
+        this.nextButton.on('click', this.handleCarouselMove('right'));
+        this.#setButtonState();
+    }
+
+    #computeNextMove() {
+        let lastItem = $(this.items.slice(-1)[0]);
+        let itemWidth = lastItem.outerWidth();
+        let carouselRightEdge = $(this.carousel).offset().left + $(this.carousel).outerWidth();
+        let lastItemRightEdge = lastItem.offset().left + itemWidth;
+        return lastItemRightEdge - carouselRightEdge;
+    }
+
+    #computerCurrentLeft() {
+        let current = this.wrapper.css('left');
+        return parseInt(current.substr(0, current.lastIndexOf('px')));
+    }
+
+    #hideButton(button) {
+        button.animate({opacity: 0}, 250, function () {
+            $(this).addClass('disabled');
+        });
+    }
+
+    #showButton(button) {
+        button.animate({opacity: 1}, 250, function () {
+            $(this).removeClass('disabled');
+        });
+    }
+
+    #setButtonState() {
+        let lastItem = $(this.items.slice(-1)[0]);
+        let itemWidth = lastItem.outerWidth();
+        let currentLeft = this.#computerCurrentLeft();
+        let nextMove = this.#computeNextMove();
+
+        if (Math.abs(currentLeft) < itemWidth) {
+            this.#hideButton(this.prevButton);
+        } else {
+            this.#showButton(this.prevButton);
+        }
+        if (nextMove <= 0) {
+            this.#hideButton(this.nextButton);
+        } else {
+            this.#showButton(this.nextButton);
+        }
+    }
+
+    #computeMove(direction = 'left') {
+        let multiplier = 1;
+        let current = this.wrapper.css('left');
+        let currentLeft = parseInt(current.substr(0, current.lastIndexOf('px')));
+        let lastItem = $(this.items.slice(-1)[0]);
+        let itemWidth = lastItem.outerWidth();
+
+        if (direction !== 'right' && currentLeft === 0) {
+            return currentLeft;
+        }
+        if (direction === 'right') {
+            let carouselRightEdge = $(this.carousel).offset().left + $(this.carousel).outerWidth();
+            let lastItemRightEdge = lastItem.offset().left + itemWidth;
+            if (lastItemRightEdge <= carouselRightEdge) {
+                return currentLeft;
+            }
+            multiplier = -1;
+        }
+        return currentLeft + (multiplier * this.advance);
+    }
 
     constructor(carousel) {
         this.carousel = carousel;
         this.wrapper = carousel.find('.carousel-item-wrapper');
         this.items = this.wrapper.children();
         this.advance = $(this.items[0]).outerWidth(true);
-        this.setupButtons();
+        this.isMoving = false;
+        this.#setupButtons();
     }
 
-    moveCarousel($direction = 'left') {
-        let $carousel = this.carousel;
-        let $wrapper = this.wrapper;
-        let $advance = this.advance;
-        let $items = this.items;
-        let $prevButton = this.prevButton;
-        let $nextButton = this.nextButton;
-
+    handleCarouselMove(direction = 'left') {
+        const carousel = this;
         return function () {
-            // todo - refactor, separate concerns: evaluation, rendering, etc.
-            let $multiplier = 1;
-            let $current = $wrapper.css('left');
-            let $currentLeft = parseInt($current.substr(0, $current.lastIndexOf('px')));
-            if ($direction !== 'right' && $currentLeft === 0) {
-                console.log('Carousel at max left');
-                $prevButton.addClass('disabled');
+            if (carousel.isMoving) {
                 return;
             }
-            if ($direction === 'right') {
-                let $carouselRightEdge = $($carousel).offset().left + $($carousel).outerWidth();
-                let $lastItem = $($items.slice(-1)[0]);
-                let $lastItemRightEdge = $lastItem.offset().left + $lastItem.outerWidth();
-                if ($lastItemRightEdge <= $carouselRightEdge) {
-                    console.log('Carousel at max right');
-                    $nextButton.addClass('disabled');
-                    return;
-                }
-                $multiplier = -1;
-                $prevButton.removeClass('disabled');
-            } else {
-                $nextButton.removeClass('disabled');
-            }
-            let $move = $currentLeft + ($multiplier * $advance);
-            $wrapper.animate({left: $move + 'px'});
+            carousel.isMoving = true;
+            let move = carousel.#computeMove(direction);
+            let wrapper = carousel.wrapper;
+            wrapper.animate({left: move + 'px'}, 500, function () {
+                carousel.#setButtonState();
+                carousel.isMoving = false;
+            });
         }
-    }
-
-    setupButtons() {
-        this.prevButton = this.carousel.children('.carousel-prev-button');
-        this.nextButton = this.carousel.children('.carousel-next-button');
-        console.log('Attaching Carousel.js button functionality to', this.prevButton, this.nextButton);
-        this.prevButton.on('click', this.moveCarousel());
-        this.prevButton.addClass('disabled');
-        this.nextButton.on('click', this.moveCarousel('right'));
     }
 }

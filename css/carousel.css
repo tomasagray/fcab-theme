@@ -1,0 +1,71 @@
+/* Styles for Carousel.js */
+.carousel-container {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-prev-button,
+.carousel-next-button {
+    padding: 3rem 2rem;
+    opacity: .9;
+}
+
+.carousel-prev-button:hover,
+.carousel-next-button:hover {
+    cursor: pointer;
+    opacity: 1;
+    background-color: whitesmoke;
+}
+
+.carousel-prev-button.disabled,
+.carousel-next-button.disabled {
+    opacity: 0;
+    cursor: default;
+}
+
+.carousel-prev-button img,
+.carousel-next-button img {
+    height: 2rem;
+}
+
+.carousel {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+.carousel-item-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    left: 0;
+}
+
+.carousel-item {
+    opacity: .5;
+    min-width: 33%;
+    position: relative;
+}
+
+.carousel-item:hover {
+    opacity: 1;
+}
+
+.carousel-item > a {
+    opacity: .5;
+    padding: 1rem;
+}
+
+.carousel-item > a:hover {
+    opacity: 1;
+    color: black;
+}
+
+.carousel-item-image {
+    width: 15rem;
+    height: 15rem;
+    padding: 1rem;
+    border-radius: .8rem;
+    background-size: cover;
+}

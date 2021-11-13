@@ -37,15 +37,15 @@ $loop->get_posts();
         <div class="carousel-container" id="fcab-carousel-container">
             <div class="carousel-prev-button">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/carousel-prev.png" alt="Previous"
-                     id="current-project-carousel-prev" class="fcab-carousel-prev"/>
+                     id="current-project-carousel-prev"/>
             </div>
-            <div class="fcab-carousel" id="main-page-project-carousel">
+            <div class="carousel" id="main-page-project-carousel">
                 <div class="carousel-item-wrapper">
                     <?php
                     // display latest projects
                     if ($loop->have_posts()):
                         while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="fcab-carousel-item">
+                            <div class="carousel-item">
                                 <a href="<?php the_permalink(); ?>">
                                     <?php
                                     // get Project featured image, or placeholder
@@ -54,7 +54,7 @@ $loop->get_posts();
                                         $thumbnail = get_template_directory_uri() . '/img/placeholder.png';
                                     }
                                     ?>
-                                    <div class="fcab-carousel-image"
+                                    <div class="carousel-item-image"
                                          style="background-image: url('<?php echo $thumbnail; ?>');">
                                         &nbsp;
                                     </div>
@@ -68,14 +68,14 @@ $loop->get_posts();
             </div>
             <div class="carousel-next-button">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/carousel-next.png" alt="Next"
-                     id="current-project-carousel-next" class="fcab-carousel-next"/>
+                     id="current-project-carousel-next"/>
             </div>
         </div>
         <script>
             $(function () {
                 let elem = $('#fcab-carousel-container');
                 let carousel = new Carousel(elem);
-                console.log('Created Carousel:', carousel);
+                console.log('created Carousel on:', carousel);
             });
         </script>
     </div>

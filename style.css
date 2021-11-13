@@ -18,6 +18,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "css/header.css";
 @import "css/footer.css";
 @import "css/project_page.css";
+@import "css/carousel.css";
 
 /* Variables */
 :root {
@@ -241,74 +242,6 @@ a.link-button:hover {
 .pagination-container {
     display: flex;
     justify-content: space-between;
-}
-
-
-/* Carousel */
-.carousel-container {
-    display: flex;
-    align-items: center;
-}
-
-.carousel-prev-button,
-.carousel-next-button {
-    padding: 1rem 2rem;
-    opacity: .9;
-}
-
-.carousel-prev-button:hover,
-.carousel-next-button:hover {
-    cursor: pointer;
-    opacity: 1;
-    background-color: whitesmoke;
-}
-
-.carousel-prev-button.disabled,
-.carousel-next-button.disabled {
-    opacity: 0;
-    cursor: default;
-}
-
-div#main-page-project-carousel {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    flex: 1 1 auto;
-}
-
-.carousel-item-wrapper {
-    display: flex;
-    width: 100%;
-    position: relative;
-    left: 0;
-}
-
-.fcab-carousel-item {
-    opacity: .5;
-    min-width: 33%;
-    position: relative;
-}
-
-.fcab-carousel-item:hover {
-    opacity: 1;
-}
-
-.fcab-carousel-item > a {
-    opacity: .5;
-    padding: 1rem;
-}
-
-.fcab-carousel-item > a:hover {
-    opacity: 1;
-    color: black;
-}
-
-.fcab-carousel-image {
-    width: 15rem;
-    height: 15rem;
-    padding: 1rem;
-    border-radius: .8rem;
-    background-size: cover;
 }
 
 
