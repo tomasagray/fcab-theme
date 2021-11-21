@@ -17,14 +17,7 @@ get_header();
             <div class="project-card-container">
                 <?php print_project_cards($loop); ?>
             </div>
-            <div class="pagination-container">
-                <div class="nav-previous alignleft">
-                    <?php echo get_page_link_html(get_prev_link($loop), '&laquo; Prev.'); ?>
-                </div>
-                <div class="nav-next alignright">
-                    <?php echo get_page_link_html(get_next_link($loop), 'Next 	&raquo;'); ?>
-                </div>
-            </div>
+            <?php print_pagination_container($loop); ?>
         <?php else:
             echo '<p>There are currently no programs. Please check back soon.</p>';
         endif;

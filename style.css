@@ -242,6 +242,10 @@ a.link-button:hover {
 .pagination-container {
     display: flex;
     justify-content: space-between;
+    padding: 2rem;
+    background-color: whitesmoke;
+    border-bottom: 2px solid #ccc;
+
 }
 
 
@@ -313,6 +317,11 @@ a.small-link-button:hover {
 
 
 /* Projects */
+.project-heading {
+    border-bottom: 2px solid #28A54A;
+    background-color: whitesmoke;
+    padding: 1rem;
+}
 .project-tag-container {
     display: none; /* Randi requests hidden */
 }

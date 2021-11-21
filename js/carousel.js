@@ -26,7 +26,7 @@ class Carousel {
         return lastItemRightEdge - carouselRightEdge;
     }
 
-    #computerCurrentLeft() {
+    #computeCurrentLeft() {
         let current = this.wrapper.css('left');
         return parseInt(current.substr(0, current.lastIndexOf('px')));
     }
@@ -46,7 +46,7 @@ class Carousel {
     #setButtonState() {
         let lastItem = $(this.items.slice(-1)[0]);
         let itemWidth = lastItem.outerWidth();
-        let currentLeft = this.#computerCurrentLeft();
+        let currentLeft = this.#computeCurrentLeft();
         let nextMove = this.#computeNextMove();
 
         if (Math.abs(currentLeft) < itemWidth) {

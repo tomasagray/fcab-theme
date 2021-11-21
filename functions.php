@@ -224,6 +224,25 @@ function get_page_link_html($url, $text): string
     return '<a href="' . $url . '" class="small-link-button">' . $text . '</a>';
 }
 
+function print_pagination_container($loop): void
+{
+    $prev_button = get_page_link_html(get_prev_link($loop), '&laquo; Prev.');
+    $next_button = get_page_link_html(get_next_link($loop), 'Next 	&raquo;');
+    if ("" === $prev_button && "" === $next_button) {
+        return;
+    }
+    ?>
+    <div class="pagination-container">
+        <div class="nav-previous alignleft">
+            <?php echo $prev_button; ?>
+        </div>
+        <div class="nav-next alignright">
+            <?php echo $next_button; ?>
+        </div>
+    </div>
+    <?php
+}
+
 function get_query_url(array $param = null): string
 {
     $url = $_SERVER['REQUEST_URI'];

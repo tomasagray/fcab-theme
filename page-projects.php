@@ -22,14 +22,7 @@ get_header();
                 wp_reset_postdata();
                 ?>
             </div>
-            <div class="pagination-container">
-                <div class="nav-previous alignleft">
-                    <?php echo get_page_link_html(get_prev_link($loop), '&laquo; Prev.'); ?>
-                </div>
-                <div class="nav-next alignright">
-                    <?php echo get_page_link_html(get_next_link($loop), 'Next 	&raquo;'); ?>
-                </div>
-            </div>
+            <?php print_pagination_container($loop); ?>
         <?php else:
             echo '<p>There are currently no projects. Please check back soon.</p>';
         endif;
