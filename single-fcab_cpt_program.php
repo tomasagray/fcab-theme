@@ -17,10 +17,21 @@ $title = get_the_title();
     <?php
     $term = get_term_by('name', $title, PROGRAM_TAG);
     if ($term):
+        $args = get_cpt_query(ACTIVITIES_CPT, $term);
+        $loop = new WP_Query($args);
+        if ($loop->have_posts()): ?>
+            <h2 class="project-heading">Activities</h2>
+            <div class="project-card-container">
+                <?php print_project_cards($loop); ?>
+            </div>
+        <?php endif;
+
+        wp_reset_postdata();
+
         $args = get_cpt_query(PROJECTS_CPT, $term);
         $loop = new WP_Query($args);
         if ($loop->have_posts()): ?>
-            <h2>Projects</h2>
+            <h2 class="project-heading">Projects</h2>
             <div class="project-card-container">
                 <?php print_project_cards($loop); ?>
             </div>
