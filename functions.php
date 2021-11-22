@@ -117,13 +117,14 @@ function register_project_tags_menu()
  * @param $current_tag ?WP_Term Program Tag
  * @return array
  */
-function get_cpt_query(string $post_type, WP_Term $current_tag = null): array
+function get_cpt_query(string $post_type, WP_Term $current_tag = null, int $results = 0): array
 {
+    $posts_per_page = ($results !== 0) ? $results : CARDS_DISPLAYED;
     $page_num = get_page_num();
     $q_args = [
         'post_type' => $post_type,
         'post_status' => 'publish',
-        'posts_per_page' => CARDS_DISPLAYED,
+        'posts_per_page' => $posts_per_page,
         'paged' => $page_num,
         'order' => 'DESC',
         'orderby' => 'date'

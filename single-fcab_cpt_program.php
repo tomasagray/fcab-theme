@@ -17,7 +17,7 @@ $title = get_the_title();
     <?php
     $term = get_term_by('name', $title, PROGRAM_TAG);
     if ($term):
-        $args = get_cpt_query(ACTIVITIES_CPT, $term);
+        $args = get_cpt_query(ACTIVITIES_CPT, $term, -1);
         $loop = new WP_Query($args);
         if ($loop->have_posts()): ?>
             <h2 class="project-heading">Activities</h2>
@@ -28,7 +28,7 @@ $title = get_the_title();
 
         wp_reset_postdata();
 
-        $args = get_cpt_query(PROJECTS_CPT, $term);
+        $args = get_cpt_query(PROJECTS_CPT, $term, -1);
         $loop = new WP_Query($args);
         if ($loop->have_posts()): ?>
             <h2 class="project-heading">Projects</h2>
