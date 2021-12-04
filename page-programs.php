@@ -11,7 +11,7 @@ get_header();
     <div class="content-box">
         <h1 class="centered-heading">Programs</h1>
         <?php
-        $args = get_cpt_query(PROGRAMS_CPT);
+        $args = get_programs_query();
         $loop = new WP_Query($args);
         if ($loop->have_posts()): ?>
             <div class="project-card-container">

@@ -115,6 +115,7 @@ function register_project_tags_menu()
 /**
  * @param $post_type string Custom Post Type identifier
  * @param $current_tag ?WP_Term Program Tag
+ * @param int $results int Number of results to return; -1 for all
  * @return array
  */
 function get_cpt_query(string $post_type, WP_Term $current_tag = null, int $results = 0): array
@@ -137,6 +138,70 @@ function get_cpt_query(string $post_type, WP_Term $current_tag = null, int $resu
         ]);
     }
     return $q_args;
+}
+
+function get_programs_query(): array
+{
+    $args = get_cpt_query(PROGRAMS_CPT);
+    $args['orderby'] = 'menu_order';
+    $args['order'] = 'ASC';
+    return $args;
+}
+
+/**
+ * @return string
+ */
+function get_query_string(): ?string
+{
+    if (in_array('REDIRECT_QUERY_STRING', $_SERVER, true)) {
+        $query = $_SERVER['REDIRECT_QUERY_STRING'];
+        if ($query !== null) {
+            $query = '?' . $query;
+        }
+        return $query;
+    }
+    return null;
+}
+
+function get_program_term($program): ?WP_Term
+{
+    if ($program === null) {
+        return null;
+    }
+    $term = get_term_by('slug', $program->ID, PROGRAM_TAG);
+    if ($term !== false) {
+        return $term;
+    }
+    return null;
+}
+
+function get_program_tags(): array
+{
+    $q = get_programs_query();
+    $loop = new WP_Query($q);
+    // ensure consistent order logic for Programs
+    return array_map(static function ($program) {
+        return get_program_term($program);
+    }, $loop->get_posts());
+}
+
+function print_cpt_by_program(string $post_type): void
+{
+    $terms = get_program_tags();
+    foreach ($terms as $term) {
+        $args = get_cpt_query($post_type, $term, -1);
+        $loop = new WP_Query($args);
+
+        echo '<h2 class="project-heading">' . $term->name . '</h2>';
+        echo '<div class="project-card-container">';
+        if ($loop->have_posts()) {
+            print_project_cards($loop);
+        } else {
+            echo '<p>There is currently nothing for this category. Please check back soon.</p>';
+        }
+        echo '</div>';
+        wp_reset_postdata();
+    }
 }
 
 /**
@@ -170,21 +235,6 @@ function print_project_cards(WP_Query $loop): void
             echo '</div>';
         endif;
     endwhile;
-}
-
-/**
- * @return string
- */
-function get_query_string(): ?string
-{
-    if (in_array('REDIRECT_QUERY_STRING', $_SERVER, true)) {
-        $query = $_SERVER['REDIRECT_QUERY_STRING'];
-        if ($query !== null) {
-            $query = '?' . $query;
-        }
-        return $query;
-    }
-    return null;
 }
 
 function get_prev_link($loop): ?string

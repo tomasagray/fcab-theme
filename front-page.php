@@ -4,20 +4,13 @@ namespace fcab\theme;
 
 use WP_Query;
 
-const POST_TYPE = 'fcab_cpt_program';
-const CAROUSEL_PROJECT_COUNT = 6;
-
 
 get_header();
 
 $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
-// Get projects
-$loop = new WP_Query([
-    'post_type' => POST_TYPE,
-    'post_status' => 'publish',
-    'posts_per_page' => CAROUSEL_PROJECT_COUNT
-]);
+$args = get_programs_query();
+$loop = new WP_Query($args);
 $loop->get_posts();
 ?>
     <div class="hero-image-container">
@@ -61,9 +54,7 @@ $loop->get_posts();
                                     <h3><?php the_title(); ?></h3>
                                 </a>
                             </div>
-                        <?php endwhile; ?>
-                    <?php else: echo "No Activities at this time. Please back soon."; ?>
-                    <?php endif; ?>
+                        <?php endwhile; ?><?php else: echo "No Activities at this time. Please back soon."; ?><?php endif; ?>
                 </div>
             </div>
             <div class="carousel-next-button">

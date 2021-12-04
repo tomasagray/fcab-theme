@@ -73,7 +73,7 @@ class Menu
             $class = 'nav-menu';
         }
         $str = '<ul class="'.$class.'" id="'.$this->title.'">';
-        if ($this->items !== null) {
+        if (count($this->items) > 0) {
             foreach ($this->items as $item) {
                 $str .= $item->toHtml();
             }
