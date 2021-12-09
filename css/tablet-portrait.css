@@ -105,8 +105,12 @@ div#content-container {
     margin-top: var(--nav-menu-height);
 }
 
+.hero-image-container {
+    top: 8vh;
+}
+
 .hero-header-image {
-    top: 4vw !important;
+    top: 4vh !important;
     width: 100% !important;
     height: 15rem !important;
 }
@@ -129,6 +133,14 @@ div#about-page-container {
 
 .child-page {
     height: revert;
+    border: 1px solid #efefef;
+    background-color: whitesmoke;
+    margin: 2rem 0;
+    padding: 2rem;
+}
+
+.child-page-excerpt-container {
+    padding: revert;
 }
 
 .child-page-image {

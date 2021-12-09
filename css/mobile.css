@@ -1,6 +1,6 @@
 /* Mobile styles */
 h1 {
-    font-size: 32pt;
+    font-size: 9vw;
 }
 
 /* Shortcodes */
@@ -128,12 +128,20 @@ div#content-container {
     margin-top: var(--nav-menu-height);
 }
 
+div#about-content-container {
+    margin: revert;
+}
+
 .content-box {
     padding: 2rem 2rem;
 }
 
 .content-box.hero {
     margin-top: var(--nav-menu-height);
+}
+
+.hero-image-container {
+    top: 8vh;
 }
 
 .hero-header-image {
@@ -182,6 +190,14 @@ div#about-page-container {
 
 .child-page {
     height: revert;
+    border: 1px solid #efefef;
+    background-color: whitesmoke;
+    margin: 2rem 0;
+    padding: 2rem;
+}
+
+.child-page-excerpt-container {
+    padding: revert;
 }
 
 .child-page-image {

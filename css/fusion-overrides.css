@@ -1,3 +1,7 @@
 .fusion-fullwidth {
     width: 100%;
 }
+
+.fusion-title {
+    white-space: pre-line !important;
+}

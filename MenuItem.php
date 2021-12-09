@@ -1,7 +1,5 @@
 <?php
 
-namespace fcab\theme;
-
 
 class MenuItem
 {
@@ -103,13 +101,13 @@ class MenuItem
             $class = 'menu-item';
         }
 
-        $str = '<li id="menu-item-'.$this->getId().'" class="'.$class.'">'
-                .'<div class="menu-item-container">'
-                .'<a href="'.$this->getUrl().'">'.$this->getTitle().'</a>';
+        $str = '<li id="menu-item-' . $this->getId() . '" class="' . $class . '">'
+            . '<div class="menu-item-container">'
+            . '<a href="' . $this->getUrl() . '">' . $this->getTitle() . '</a>';
         if ($this->submenu !== null) {
-            $str .= '<img src="'.get_template_directory_uri().'/img/mobile-menu-arrow.png"'
-                    .' class="mobile-submenu-arrow" alt="Expand submenu"/>'
-                    .'</div>';
+            $str .= '<img src="' . get_template_directory_uri() . '/img/mobile-menu-arrow.png"'
+                . ' class="mobile-submenu-arrow" alt="Expand submenu"/>'
+                . '</div>';
             $str .= $this->submenu->toHtml('sub-menu');
         } else {
             $str .= '</div>';

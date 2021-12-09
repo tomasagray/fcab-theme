@@ -39,18 +39,18 @@ div#content-container {
     width: 100%;
 }
 
+.child-page-excerpt {
+    max-width: 100%;
+    padding: 1rem 3rem;
+}
+
 p.child-page-excerpt-text {
     max-height: 6vw;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
     width: 100%;
     margin: 1rem auto;
-}
-
-.child-page-excerpt {
-    max-width: 100%;
-    padding: 1rem 3rem;
+    -webkit-line-clamp: 3;
 }
 
 /* Projects */

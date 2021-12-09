@@ -1,6 +1,5 @@
 <?php
 
-namespace fcab\theme;
 
 class Menu
 {
@@ -72,7 +71,7 @@ class Menu
         if ($class === null) {
             $class = 'nav-menu';
         }
-        $str = '<ul class="'.$class.'" id="'.$this->title.'">';
+        $str = '<ul class="' . $class . '" id="' . $this->title . '">';
         if (count($this->items) > 0) {
             foreach ($this->items as $item) {
                 $str .= $item->toHtml();
