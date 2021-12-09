@@ -2,17 +2,29 @@
 
 namespace fcab\theme;
 
+
+use Menu;
+use MenuItem;
+use Settings;
 use WP_Query;
 use WP_Term;
 
 require_once 'custom-shortcodes.php';
 require_once 'Menu.php';
 require_once 'MenuItem.php';
+require_once 'Settings.php';
+
+const THEME_NAME = 'fcab_theme';
+const SETTINGS_GROUP = 'fcab_theme_group';
+const SECTION_ID = 'fcab_theme_settings';
+const SECTION_TITLE = 'fcab_theme_settings_section';
+const PAGE_ID = 'fcab_theme_settings';
 
 const MAIN_MENU = 'main-menu';
 const BOTTOM_MENU = 'bottom-menu';
 const SOCIAL_MENU = 'social-menu';
 const PROJECT_TAGS_MENU = 'tags-menu';
+
 const PAGE_URL_PATTERN = '/(\/page\/)(\d)+[\/]?/';
 const PROGRAMS_CPT = 'fcab_cpt_program';
 const PROGRAM_TAG = 'fcab_program_tag';
@@ -21,6 +33,76 @@ const ACTIVITIES_CPT = 'fcab_cpt_activity';
 const CARDS_DISPLAYED = 6;
 
 
+// === Registration / init ===
+function register_main_menu()
+{
+    register_nav_menu(MAIN_MENU, __('Main Menu'));
+}
+
+function register_bottom_menu()
+{
+    register_nav_menu(BOTTOM_MENU, __('Footer Menu'));
+}
+
+function register_social_menu()
+{
+    register_nav_menu(SOCIAL_MENU, __('Social Networking Menu'));
+}
+
+function register_project_tags_menu()
+{
+    register_nav_menu(PROJECT_TAGS_MENU, __('Project Tags Menu'));
+}
+
+function register_theme_settings_page()
+{
+    add_options_page(
+        'FCAB Theme Settings',
+        'Theme Settings',
+        'manage_options',
+        PAGE_ID,
+        'render_fcab_theme_settings'
+    );
+}
+
+function render_fcab_theme_settings()
+{
+    ?>
+    <h2>FCAB Custom Theme Settings</h2>
+    <form action="options.php" method="post">
+        <?php
+        settings_fields(SETTINGS_GROUP);
+        do_settings_sections(PAGE_ID);
+        ?>
+    </form>
+    <?php
+}
+
+function create_theme_settings()
+{
+    register_setting(SETTINGS_GROUP, 'fcab_empty_text');
+    add_settings_section(
+        SECTION_ID,
+        SECTION_TITLE,
+        static function () {
+            echo "<p>Default theme settings</p>";
+        },
+        PAGE_ID
+    );
+
+    add_settings_field(
+        'fcab_theme_default_empty_text',
+        'Default empty text',
+        static function () {
+            echo "<p>Enter text to display when there are no data items in a section</p>";
+        },
+        PAGE_ID,
+        SECTION_ID
+    );
+}
+
+
+// === Menu ===
 function get_menu($location)
 {
     if (($locations = get_nav_menu_locations()) && isset($locations[$location])) {
@@ -92,26 +174,7 @@ function handle_no_social_menu()
     echo '<p class="warning">There is no social networking menu defined.</p>';
 }
 
-function register_main_menu()
-{
-    register_nav_menu(MAIN_MENU, __('Main Menu'));
-}
-
-function register_bottom_menu()
-{
-    register_nav_menu(BOTTOM_MENU, __('Footer Menu'));
-}
-
-function register_social_menu()
-{
-    register_nav_menu(SOCIAL_MENU, __('Social Networking Menu'));
-}
-
-function register_project_tags_menu()
-{
-    register_nav_menu(PROJECT_TAGS_MENU, __('Project Tags Menu'));
-}
-
+// === Helpers ===
 /**
  * @param $post_type string Custom Post Type identifier
  * @param $current_tag ?WP_Term Program Tag
@@ -197,7 +260,7 @@ function print_cpt_by_program(string $post_type): void
         if ($loop->have_posts()) {
             print_project_cards($loop);
         } else {
-            echo '<p>There is currently nothing for this category. Please check back soon.</p>';
+            echo '<p>' . Settings::$noContentMessage . '</p>';
         }
         echo '</div>';
         wp_reset_postdata();
@@ -325,6 +388,8 @@ function get_page_num(): int
 }
 
 // Hooks
+//add_action('admin_init', 'fcab\theme\create_theme_settings');
+//add_action('admin_init', 'fcab\theme\register_theme_settings_page');
 add_action('init', 'fcab\theme\register_main_menu');
 add_action('init', 'fcab\theme\register_bottom_menu');
 add_action('init', 'fcab\theme\register_social_menu');
