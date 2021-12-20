@@ -3,11 +3,7 @@
 namespace fcab\theme;
 
 
-use Menu;
-use MenuItem;
-use Settings;
-use WP_Query;
-use WP_Term;
+use Menu;use MenuItem;use Settings;use WP_Query;use WP_Term;
 
 require_once 'custom-shortcodes.php';
 require_once 'Menu.php';
@@ -248,23 +244,36 @@ function get_program_tags(): array
     }, $loop->get_posts());
 }
 
+function print_quick_jump_menu(): void
+{
+    $tags = get_program_tags();
+    foreach ($tags as $tag): ?>
+        <a class="small-link-button" href="#<?php echo $tag->slug; ?>">
+            <?php echo $tag->name; ?>
+        </a>
+    <?php endforeach;
+}
+
 function print_cpt_by_program(string $post_type): void
 {
     $terms = get_program_tags();
-    foreach ($terms as $term) {
+    foreach ($terms as $term):
         $args = get_cpt_query($post_type, $term, -1);
         $loop = new WP_Query($args);
+        ?>
 
-        echo '<h2 class="project-heading">' . $term->name . '</h2>';
-        echo '<div class="project-card-container">';
-        if ($loop->have_posts()) {
-            print_project_cards($loop);
-        } else {
-            echo '<p>' . Settings::$noContentMessage . '</p>';
-        }
+        <a id="<?php echo $term->slug; ?>"> </a><br/>
+        <h2 class="project-heading"> <?php echo $term->name; ?> </h2>
+        <div class="project-card-container">
+            <?php
+            if ($loop->have_posts()) {
+                print_project_cards($loop);
+            } else {
+                echo '<p>' . Settings::$noContentMessage . '</p>';
+            }
         echo '</div>';
         wp_reset_postdata();
-    }
+    endforeach;
 }
 
 /**

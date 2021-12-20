@@ -105,6 +105,16 @@ div#content-container {
     margin-top: var(--nav-menu-height);
 }
 
+.quick-jump-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.quick-jump-container > a {
+    width: 15rem;
+}
+
 .hero-image-container {
     top: 8vh;
 }

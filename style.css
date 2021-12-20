@@ -3,7 +3,7 @@ Theme Name: FCAB Custom Theme
 Theme URI: http://wordpress.org/themes/fcab
 Author: Tomás Gray
 Description: Custom theme developed for the Foundation for Charitable Activities in Bangladesh (https://www.fcabd.org/)
-Version: 0.2.4
+Version: 0.2.5
 Requires at least: 5.0
 Tested up to: 5.8.1
 Requires PHP: 7.4
@@ -254,6 +254,16 @@ a.link-button:hover {
     font-size: 16pt;
 }
 
+.quick-jump-container {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.quick-jump-container > a {
+    margin: 1rem;
+}
+
 /* About page */
 div#about-content-container {
     margin: 4rem;
@@ -313,7 +323,9 @@ a.small-link-button {
     padding: 0.5rem 1.5rem;
     color: var(--learn-more-button-color);
     text-transform: uppercase;
+    text-align: center;
     white-space: nowrap;
+    max-width: 15rem;
 }
 
 a.small-link-button:hover {
@@ -328,6 +340,7 @@ a.small-link-button:hover {
     background-color: whitesmoke;
     padding: 1rem;
 }
+
 .project-tag-container {
     display: none; /* Randi requests hidden */
 }
