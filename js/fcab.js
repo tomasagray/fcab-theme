@@ -25,8 +25,8 @@ $(window).load(function () {
 
         if (pos > showLimit) {
             $('.scroll-top-button').stop(true).animate({
-                    opacity: 100
-                }, 500);
+                opacity: 100
+            }, 500);
         } else {
             $('.scroll-top-button').stop(true).animate({
                 opacity: 0

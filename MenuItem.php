@@ -24,6 +24,51 @@ class MenuItem
     }
 
     /**
+     * @return Menu
+     */
+    public function getSubmenu(): Menu
+    {
+        return $this->submenu;
+    }
+
+    /**
+     * @param Menu $submenu
+     */
+    public function setSubmenu(Menu $submenu): void
+    {
+        $this->submenu = $submenu;
+    }
+
+    public function addSubmenuItem(MenuItem $item): void
+    {
+        if ($this->submenu === null) {
+            $this->setSubmenu(new Menu(null, ''));
+        }
+        $this->submenu->addItem($item);
+    }
+
+    public function toHtml(string $class = null): string
+    {
+        if ($class === null) {
+            $class = 'menu-item';
+        }
+
+        $str = '<li id="menu-item-' . $this->getId() . '" class="' . $class . '">'
+            . '<div class="menu-item-container">'
+            . '<a href="' . $this->getUrl() . '">' . $this->getTitle() . '</a>';
+        if ($this->submenu !== null) {
+            $str .= '<img src="' . get_template_directory_uri() . '/img/mobile-menu-arrow.png"'
+                . ' class="mobile-submenu-arrow" alt="Expand submenu"/>'
+                . '</div>';
+            $str .= $this->submenu->toHtml('sub-menu');
+        } else {
+            $str .= '</div>';
+        }
+        $str .= '</li>';
+        return $str;
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -69,50 +114,5 @@ class MenuItem
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    /**
-     * @return Menu
-     */
-    public function getSubmenu(): Menu
-    {
-        return $this->submenu;
-    }
-
-    /**
-     * @param Menu $submenu
-     */
-    public function setSubmenu(Menu $submenu): void
-    {
-        $this->submenu = $submenu;
-    }
-
-    public function addSubmenuItem(MenuItem $item): void
-    {
-        if ($this->submenu === null) {
-            $this->setSubmenu(new Menu(null, ''));
-        }
-        $this->submenu->addItem($item);
-    }
-
-    public function toHtml(string $class = null): string
-    {
-        if ($class === null) {
-            $class = 'menu-item';
-        }
-
-        $str = '<li id="menu-item-' . $this->getId() . '" class="' . $class . '">'
-            . '<div class="menu-item-container">'
-            . '<a href="' . $this->getUrl() . '">' . $this->getTitle() . '</a>';
-        if ($this->submenu !== null) {
-            $str .= '<img src="' . get_template_directory_uri() . '/img/mobile-menu-arrow.png"'
-                . ' class="mobile-submenu-arrow" alt="Expand submenu"/>'
-                . '</div>';
-            $str .= $this->submenu->toHtml('sub-menu');
-        } else {
-            $str .= '</div>';
-        }
-        $str .= '</li>';
-        return $str;
     }
 }

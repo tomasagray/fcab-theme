@@ -17,8 +17,7 @@ get_header();
             <div class="project-card-container">
                 <?php print_project_cards($loop); ?>
             </div>
-            <?php print_pagination_container($loop); ?>
-        <?php else:
+            <?php print_pagination_container($loop); ?><?php else:
             echo '<p>There are currently no programs. Please check back soon.</p>';
         endif;
         wp_reset_postdata();

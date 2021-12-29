@@ -17,8 +17,13 @@ $url = get_current_url();
 get_header();
 ?>
     <style>
-        p { margin: 3rem auto; }
-        label { display: none; }
+        p {
+            margin: 3rem auto;
+        }
+
+        label {
+            display: none;
+        }
     </style>
 
     <div class="content-box">

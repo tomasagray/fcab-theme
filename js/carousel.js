@@ -10,6 +10,15 @@ class Carousel {
     nextButton;
     isMoving;
 
+    constructor(carousel) {
+        this.carousel = carousel;
+        this.wrapper = carousel.find('.carousel-item-wrapper');
+        this.items = this.wrapper.children();
+        this.advance = $(this.items[0]).outerWidth(true);
+        this.isMoving = false;
+        this.#setupButtons();
+    }
+
     #setupButtons() {
         this.prevButton = this.carousel.children('.carousel-prev-button');
         this.nextButton = this.carousel.children('.carousel-next-button');
@@ -80,15 +89,6 @@ class Carousel {
             multiplier = -1;
         }
         return currentLeft + (multiplier * this.advance);
-    }
-
-    constructor(carousel) {
-        this.carousel = carousel;
-        this.wrapper = carousel.find('.carousel-item-wrapper');
-        this.items = this.wrapper.children();
-        this.advance = $(this.items[0]).outerWidth(true);
-        this.isMoving = false;
-        this.#setupButtons();
     }
 
     handleCarouselMove(direction = 'left') {

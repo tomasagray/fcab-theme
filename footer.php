@@ -8,16 +8,14 @@ define("THEME_URI", get_template_directory_uri());
 
 ?>
 <!-- Cont. from header.php -->
-</div>
-</div>
-</section>
+</div></div></section>
 
 <footer>
     <div id="fcab-footer-wrapper">
         <div id="fcab-footer-container">
-            <a href="<?php echo get_site_url(); ?>">
-                <img src="<?php echo THEME_URI; ?>/img/fcab_logo_small.png" id="footer-logo"
-                     alt="FCAB | The Foundation for Charitable Activities in Bangladesh"/>
+            <a href="<?php echo get_site_url(); ?>"> <img src="<?php echo THEME_URI; ?>/img/fcab_logo_small.png"
+                                                          id="footer-logo"
+                                                          alt="FCAB | The Foundation for Charitable Activities in Bangladesh"/>
             </a>
             <div id="footer-nav-menu-container">
                 <ul id="footer-nav-menu">
@@ -25,7 +23,7 @@ define("THEME_URI", get_template_directory_uri());
                     $bottom_menu = get_menu(BOTTOM_MENU);
                     if ($bottom_menu) {
                         foreach ($bottom_menu as $menu_item) {
-                            echo '<li> <a href="'.$menu_item->url.'">';
+                            echo '<li> <a href="' . $menu_item->url . '">';
                             echo $menu_item->title;
                             echo '</a></li>';
                         }
@@ -58,6 +56,4 @@ define("THEME_URI", get_template_directory_uri());
     $(function () {
         initializeMobileMenu();
     });
-</script>
-</body>
-</html>
+</script></body></html>

@@ -15,8 +15,7 @@ get_header();
         </div>
         <?php print_cpt_by_program(ACTIVITIES_CPT); ?>
 
-        <img src="<?php echo $theme_uri; ?>/img/scroll-top-button.png"
-             alt="Back to top" class="scroll-top-button"/>
+        <img src="<?php echo $theme_uri; ?>/img/scroll-top-button.png" alt="Back to top" class="scroll-top-button"/>
     </div>
     <?php
 get_footer();

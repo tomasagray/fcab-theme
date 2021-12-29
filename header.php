@@ -26,9 +26,12 @@ $theme_uri = get_template_directory_uri();
     <link href="<?php echo $theme_uri; ?>/css/fusion-overrides.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/style.css" rel="stylesheet">
     <link href="<?php echo $theme_uri; ?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 599px)">
-    <link href="<?php echo $theme_uri; ?>/css/tablet-portrait.css" rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 899px)">
-    <link href="<?php echo $theme_uri; ?>/css/tablet-landscape.css" rel="stylesheet" media="screen and (min-width: 900px) and (max-width: 1199px)">
-    <link href="<?php echo $theme_uri; ?>/css/laptop.css" rel="stylesheet" media="screen and (min-width: 1200px) and (max-width: 1799px)">
+    <link href="<?php echo $theme_uri; ?>/css/tablet-portrait.css" rel="stylesheet"
+          media="screen and (min-width: 600px) and (max-width: 899px)">
+    <link href="<?php echo $theme_uri; ?>/css/tablet-landscape.css" rel="stylesheet"
+          media="screen and (min-width: 900px) and (max-width: 1199px)">
+    <link href="<?php echo $theme_uri; ?>/css/laptop.css" rel="stylesheet"
+          media="screen and (min-width: 1200px) and (max-width: 1799px)">
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_uri; ?>/js/vendor/slick/slick-theme.css"/>
 </head>
@@ -38,17 +41,17 @@ $theme_uri = get_template_directory_uri();
     <div id="menu-wrapper">
         <div id="menu-container">
             <div id="mobile-menu-button-container">
-                <img src="<?php echo $theme_uri; ?>/img/menu_hamburger.png" alt="Open mobile menu" class="mobile-menu-button" id="mobile-menu-button"/>
-                <img src="<?php echo $theme_uri; ?>/img/menu_close.png" alt="Close mobile menu" class="mobile-menu-button" id="mobile-menu-close-button"/>
+                <img src="<?php echo $theme_uri; ?>/img/menu_hamburger.png" alt="Open mobile menu"
+                     class="mobile-menu-button" id="mobile-menu-button"/> <img
+                        src="<?php echo $theme_uri; ?>/img/menu_close.png" alt="Close mobile menu"
+                        class="mobile-menu-button" id="mobile-menu-close-button"/>
             </div>
 
-            <a href="<?php echo get_site_url(); ?>">
-                <img src="<?php echo $theme_uri; ?>/img/fcab_logo_small.png"
+            <a href="<?php echo get_site_url(); ?>"> <img src="<?php echo $theme_uri; ?>/img/fcab_logo_small.png"
                                                           alt="FCAB | The Foundation for Charitable Activities in Bangladesh"
-                                                          id="header-logo"/>
-                <img src="<?php echo $theme_uri; ?>/img/fcab_logo_mobile.png"
-                                                          alt="FCAB | The Foundation for Charitable Activities in Bangladesh"
-                                                          id="header-logo-mobile"/>
+                                                          id="header-logo"/> <img
+                        src="<?php echo $theme_uri; ?>/img/fcab_logo_mobile.png"
+                        alt="FCAB | The Foundation for Charitable Activities in Bangladesh" id="header-logo-mobile"/>
             </a>
             <div id="menu-outer-container">
                 <div id="nav-menu-main" class="main-nav-menu-container">
@@ -73,5 +76,5 @@ $theme_uri = get_template_directory_uri();
     </div>
 </header>
 <section>
-<div id="content-wrapper">
-    <div id="content-container">
+    <div id="content-wrapper">
+        <div id="content-container">

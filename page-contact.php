@@ -20,14 +20,14 @@ get_header();
              style="background-image: url('<?php echo $thumbnail; ?>');"></div>
     </div>
     <div class="content-box hero">
-        <div class="hero-header-container">
-            <div class="hero-header-text">
-                <h1>Contact Us</h1>
-            </div>
+    <div class="hero-header-container">
+        <div class="hero-header-text">
+            <h1>Contact Us</h1>
         </div>
+    </div>
 
-        <div id="contact-form">
-            <?php the_content(); ?>
-        </div>
+    <div id="contact-form">
+        <?php the_content(); ?>
+    </div>
     <?php
 get_footer();

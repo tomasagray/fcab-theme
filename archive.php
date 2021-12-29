@@ -2,6 +2,10 @@
 
 namespace fcab\theme;
 
+require_once 'functions.php';
+
+global $wp_query;
+
 get_header();
 ?>
     <div class="content-box">
@@ -11,9 +15,6 @@ get_header();
         endwhile;
         ?>
     </div>
-    <div class="pagination-container">
-        <div class="nav-previous alignleft"><?php previous_posts_link('Prev.'); ?></div>
-        <div class="nav-next alignright"><?php next_posts_link('Next'); ?></div>
-    </div>
-<?php
+    <?php
+print_pagination_container($wp_query);
 get_footer();
