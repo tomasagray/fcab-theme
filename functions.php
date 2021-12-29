@@ -248,7 +248,7 @@ function print_quick_jump_menu(): void
 {
     $tags = get_program_tags();
     foreach ($tags as $tag): ?>
-        <a class="small-link-button" href="#<?php echo $tag->slug; ?>">
+        <a class="quick-jump-button" href="#<?php echo $tag->slug; ?>">
             <?php echo $tag->name; ?>
         </a>
     <?php endforeach;

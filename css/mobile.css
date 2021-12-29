@@ -146,8 +146,14 @@ div#about-content-container {
     flex-wrap: wrap;
 }
 
-.quick-jump-container > a {
+.quick-jump-button {
     width: 15rem;
+}
+
+.scroll-top-button {
+    max-height: 4rem;
+    right: 1rem;
+    bottom: 1rem;
 }
 
 .hero-image-container {

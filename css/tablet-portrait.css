@@ -111,7 +111,7 @@ div#content-container {
     flex-wrap: wrap;
 }
 
-.quick-jump-container > a {
+.quick-jump-button {
     width: 15rem;
 }
 
