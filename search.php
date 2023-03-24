@@ -25,7 +25,13 @@ global $wp_query;
 get_header();
 ?>
     <div class="content-box">
-        <h1>Search results</h1>
+        <h1 style="margin-bottom: 0;">Search results</h1>
+        <p style="color: #ccc; font-size: small">
+            Searching for:
+            <span style="color: #aaa">
+                <?php the_search_query(); ?>
+            </span>
+        </p>
         <p>Total results: <?php echo $wp_query->found_posts; ?></p>
 
         <div class="search-results-container">
@@ -36,9 +42,15 @@ get_header();
                 $url = $post->guid;
                 ?>
                 <div class="search-result-container">
-                    <a href="<?php echo $url; ?>" class="search-result-title"><?php echo $post->post_title; ?></a> <a
-                            href="<?php echo $url; ?>" class="search-result-link"><?php echo $url; ?></a>
-                    <p class="search-result-excerpt"><?php echo get_result_excerpt($post->post_content); ?></p>
+                    <a href="<?php echo $url; ?>" class="search-result-title">
+                        <?php echo $post->post_title; ?>
+                    </a>
+                    <a href="<?php echo $url; ?>" class="search-result-link">
+                        <?php echo $url; ?>
+                    </a>
+                    <p class="search-result-excerpt">
+                        <?php echo get_result_excerpt($post->post_content); ?>
+                    </p>
                 </div>
             <?php
             endforeach;

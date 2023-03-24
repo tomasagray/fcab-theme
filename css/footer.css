@@ -28,7 +28,7 @@ img#footer-logo {
 /* Footer menu */
 ul#footer-nav-menu {
     list-style: none;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0;
@@ -47,6 +47,20 @@ ul#footer-nav-menu > li > a {
 ul#footer-nav-menu a:hover {
     background-color: var(--footer-hover-color);
     color: black;
+}
+
+.footer-search-form {
+    margin: auto;
+    padding: 2rem;
+}
+
+.footer-search-form input {
+    display: revert;
+    float: none !important;
+}
+
+.footer-search-form #searchsubmit {
+    padding: .5rem 1rem !important;
 }
 
 /* Social media menu */

@@ -331,3 +331,9 @@ div#contact-form {
     min-width: revert;
     margin: 1rem;
 }
+
+/* Footer */
+.footer-search-form input {
+    width: 30vw !important;
+    margin: .5rem;
+}
