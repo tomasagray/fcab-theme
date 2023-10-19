@@ -337,3 +337,16 @@ div#contact-form {
     width: 30vw !important;
     margin: .5rem;
 }
+
+/* Videos */
+.wrapping-video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapping-video {
+    max-height: 640px;
+    max-width: 100%;
+    margin: 1.25rem 0;
+}
